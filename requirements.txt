@@ -1,0 +1,76 @@
+# =============================================================================
+# Molecular Descriptor Toolkit - Requirements
+# =============================================================================
+# Python 3.11.x required (3.12+ not recommended due to PyTorch nightly compatibility)
+#
+# 설치 가이드: INSTALL_GUIDE.md 참조
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Core Dependencies (필수) - conda-forge 권장
+# -----------------------------------------------------------------------------
+numpy>=1.26.4              # conda-forge 권장 (ABI 호환성)
+pandas>=2.3.0
+pyarrow>=21.0.0
+scipy>=1.16.0
+tqdm>=4.67.0
+
+# -----------------------------------------------------------------------------
+# GPU Filtering (필터링 파이프라인용)
+# -----------------------------------------------------------------------------
+# PyTorch: GPU에 따라 설치 방법이 다름
+#
+# [서버: RTX 6000 Ada (sm_89)]
+#   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+#
+# [노트북: RTX 5070 Blackwell (sm_120)]
+#   pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu130
+#
+# torch>=2.0.0
+
+# Graph/Clustering
+igraph>=1.0.0
+leidenalg>=0.11.0
+
+# Statistics
+statsmodels>=0.14.0
+tdigest>=0.5.2              # Spearman CDF 근사
+
+# -----------------------------------------------------------------------------
+# Descriptor Calculation (전처리용)
+# -----------------------------------------------------------------------------
+# RDKit: conda-forge로 설치 권장
+#   conda install -c conda-forge rdkit
+# 또는 pip:
+#   pip install rdkit
+#
+# rdkit>=2025.03.0
+
+# Mordred: conda-forge 권장
+#   conda install -c conda-forge mordred
+# mordred>=1.2.0
+
+# -----------------------------------------------------------------------------
+# Data Processing (선택)
+# -----------------------------------------------------------------------------
+duckdb>=1.4.0               # 대용량 parquet 처리
+lxml>=6.0.0                 # XML 파싱
+requests>=2.32.0            # HTTP 요청
+openpyxl>=3.1.0             # Excel 파일
+
+# -----------------------------------------------------------------------------
+# ML/Visualization (선택)
+# -----------------------------------------------------------------------------
+# scikit-learn>=1.7.0
+# xgboost>=3.1.0
+# lightgbm>=4.6.0
+# matplotlib>=3.10.0
+# seaborn>=0.13.0
+
+# -----------------------------------------------------------------------------
+# Development (선택)
+# -----------------------------------------------------------------------------
+# pytest>=8.0.0
+# black>=25.0.0
+# flake8>=7.0.0
+# mypy>=0.981

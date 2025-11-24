@@ -1,0 +1,42 @@
+system:
+  verbose: true
+  n_jobs: -1
+
+device:
+  use_gpu: true
+  device_id: 0
+  max_gpu_memory_gb: 40.0
+
+filtering:
+  # Pass 0: Variance Filtering
+  variance_threshold: 0.01
+  min_variance: 1.0e-10
+  
+  # Pass 1: Spearman Correlation Clustering
+  spearman_threshold: 0.95
+  resolution: 1.0
+  n_iterations: 5
+  seed: 42
+  
+  # Pass 2: Correlation (GPU-accelerated)
+  correlation_threshold: 0.90
+  correlation_batch_size: 10000
+  
+  # Pass 3: VIF (Variance Inflation Factor)
+  vif_threshold: 10.0
+  n_jobs_vif: 8
+  
+  # Pass 4: Nonlinear Analysis
+  w_hsic: 0.3
+  w_rdc: 0.3
+  nonlinear_threshold: 0.5
+  nonlinear_batch_size: 5000
+
+data:
+  batch_size: 100000
+  chunk_size: 500000
+  use_float32: true
+
+output:
+  save_intermediate: true
+  checkpoint_frequency: 1

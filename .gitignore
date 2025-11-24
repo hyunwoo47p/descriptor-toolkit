@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 데이터 (Git에 올리지 않음)
+*.parquet
+*.csv
+*.pkl
+*.h5
+data/
+output/
+results/
+logs/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
