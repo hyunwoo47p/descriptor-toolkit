@@ -1,0 +1,3026 @@
+{
+  "metadata": {
+    "description": "Final cluster structure with complete Pass2 expansion - includes Pass2 clusters of both alternatives AND final representatives",
+    "version": "6.0",
+    "total_descriptors": 64,
+    "descriptors_with_alternatives": 55,
+    "standalone_descriptors": 9,
+    "total_alternative_descriptors": 797,
+    "source_files": {
+      "pass2": "/mnt/user-data/uploads/pass2_spearman.json",
+      "pass3": "/mnt/user-data/uploads/pass3_vif.json",
+      "final_descriptors": "/mnt/user-data/uploads/final_descriptors.txt"
+    }
+  },
+  "statistics": {
+    "total_descriptors": 64,
+    "descriptors_with_alternatives": 55,
+    "standalone_descriptors": 9,
+    "total_alternative_descriptors": 797,
+    "cluster_size_distribution": {
+      "1": 7,
+      "2": 8,
+      "3": 6,
+      "4": 8,
+      "5": 3,
+      "6": 2,
+      "7": 3,
+      "8": 3,
+      "9": 6,
+      "10": 1,
+      "11": 1,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 3,
+      "18": 1,
+      "21": 1,
+      "24": 1,
+      "37": 1,
+      "39": 1,
+      "51": 1,
+      "328": 1
+    },
+    "removal_distribution": {
+      "pass2_only": 0,
+      "pass3_only": 18,
+      "both_passes": 37
+    },
+    "largest_clusters": [
+      {
+        "descriptor": "MATS2Z",
+        "cluster_size": 15,
+        "alternatives": 14
+      },
+      {
+        "descriptor": "NdsCH",
+        "cluster_size": 13,
+        "alternatives": 12
+      },
+      {
+        "descriptor": "PEOE_VSA13",
+        "cluster_size": 11,
+        "alternatives": 10
+      },
+      {
+        "descriptor": "NumAmideBonds",
+        "cluster_size": 10,
+        "alternatives": 9
+      },
+      {
+        "descriptor": "AATSC2i",
+        "cluster_size": 9,
+        "alternatives": 8
+      },
+      {
+        "descriptor": "fr_Ar_COO",
+        "cluster_size": 9,
+        "alternatives": 8
+      },
+      {
+        "descriptor": "AATS5se",
+        "cluster_size": 9,
+        "alternatives": 8
+      },
+      {
+        "descriptor": "ATSC5i",
+        "cluster_size": 8,
+        "alternatives": 7
+      },
+      {
+        "descriptor": "MATS1p",
+        "cluster_size": 8,
+        "alternatives": 7
+      },
+      {
+        "descriptor": "SssNH",
+        "cluster_size": 8,
+        "alternatives": 7
+      },
+      {
+        "descriptor": "AATSC1Z",
+        "cluster_size": 8,
+        "alternatives": 7
+      },
+      {
+        "descriptor": "PEOE_VSA4",
+        "cluster_size": 7,
+        "alternatives": 6
+      },
+      {
+        "descriptor": "C3SP3",
+        "cluster_size": 7,
+        "alternatives": 6
+      },
+      {
+        "descriptor": "PetitjeanIndex",
+        "cluster_size": 7,
+        "alternatives": 6
+      },
+      {
+        "descriptor": "NumUnspecifiedAtomStereoCenters",
+        "cluster_size": 7,
+        "alternatives": 6
+      },
+      {
+        "descriptor": "PEOE_VSA12",
+        "cluster_size": 6,
+        "alternatives": 5
+      },
+      {
+        "descriptor": "fr_amidine",
+        "cluster_size": 6,
+        "alternatives": 5
+      },
+      {
+        "descriptor": "EState_VSA8",
+        "cluster_size": 6,
+        "alternatives": 5
+      },
+      {
+        "descriptor": "SdCH2",
+        "cluster_size": 5,
+        "alternatives": 4
+      },
+      {
+        "descriptor": "ATSC8c",
+        "cluster_size": 5,
+        "alternatives": 4
+      }
+    ]
+  },
+  "descriptors": {
+    "PEOE_VSA12": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC1d",
+        "ATSC1d",
+        "GATS1c",
+        "GATS1d",
+        "IC0",
+        "MATS1c",
+        "MATS1d",
+        "SlogP_VSA1"
+      ],
+      "all_cluster_members": [
+        "AATSC1d",
+        "ATSC1d",
+        "GATS1c",
+        "GATS1d",
+        "IC0",
+        "MATS1c",
+        "MATS1d",
+        "PEOE_VSA12",
+        "SlogP_VSA1"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC1d",
+          "GATS1c"
+        ],
+        "pass3": [
+          "AATSC1d",
+          "GATS1c",
+          "GATS1d",
+          "IC0",
+          "SlogP_VSA1"
+        ]
+      },
+      "total_alternatives": 8
+    },
+    "ATSC5Z": {
+      "cluster_size": 6,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC5Z",
+        "AATSC5m",
+        "ATSC5m",
+        "MATS5Z",
+        "MATS5m"
+      ],
+      "all_cluster_members": [
+        "AATSC5Z",
+        "AATSC5m",
+        "ATSC5Z",
+        "ATSC5m",
+        "MATS5Z",
+        "MATS5m"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 5
+    },
+    "MATS2Z": {
+      "cluster_size": 51,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS0are",
+        "AATS0dv",
+        "AATS0pe",
+        "AATS0se",
+        "AATS1Z",
+        "AATS1are",
+        "AATS1dv",
+        "AATS1m",
+        "AATS1pe",
+        "AATS1se",
+        "AATS2Z",
+        "AATS2are",
+        "AATS2dv",
+        "AATS2m",
+        "AATS2pe",
+        "AATS2se",
+        "AATS3Z",
+        "AATS3are",
+        "AATS3m",
+        "AATS3pe",
+        "AATS3se",
+        "AATSC0are",
+        "AATSC0dv",
+        "AATSC0pe",
+        "AATSC0se",
+        "AATSC1dv",
+        "AATSC2Z",
+        "AATSC2dv",
+        "AATSC2m",
+        "ATSC0c",
+        "ATSC1dv",
+        "ATSC2Z",
+        "ATSC2dv",
+        "ATSC2m",
+        "AXp-1dv",
+        "AXp-2dv",
+        "AXp-3dv",
+        "GATS1dv",
+        "GATS2dv",
+        "GATS4c",
+        "JGI2",
+        "MATS1dv",
+        "MATS2dv",
+        "MATS2m",
+        "Mare",
+        "MinAbsPartialCharge",
+        "Mpe",
+        "Mse",
+        "PEOE_VSA14",
+        "SdsCH"
+      ],
+      "all_cluster_members": [
+        "AATS0are",
+        "AATS0dv",
+        "AATS0pe",
+        "AATS0se",
+        "AATS1Z",
+        "AATS1are",
+        "AATS1dv",
+        "AATS1m",
+        "AATS1pe",
+        "AATS1se",
+        "AATS2Z",
+        "AATS2are",
+        "AATS2dv",
+        "AATS2m",
+        "AATS2pe",
+        "AATS2se",
+        "AATS3Z",
+        "AATS3are",
+        "AATS3m",
+        "AATS3pe",
+        "AATS3se",
+        "AATSC0are",
+        "AATSC0dv",
+        "AATSC0pe",
+        "AATSC0se",
+        "AATSC1dv",
+        "AATSC2Z",
+        "AATSC2dv",
+        "AATSC2m",
+        "ATSC0c",
+        "ATSC1dv",
+        "ATSC2Z",
+        "ATSC2dv",
+        "ATSC2m",
+        "AXp-1dv",
+        "AXp-2dv",
+        "AXp-3dv",
+        "GATS1dv",
+        "GATS2dv",
+        "GATS4c",
+        "JGI2",
+        "MATS1dv",
+        "MATS2Z",
+        "MATS2dv",
+        "MATS2m",
+        "Mare",
+        "MinAbsPartialCharge",
+        "Mpe",
+        "Mse",
+        "PEOE_VSA14",
+        "SdsCH"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATS0are",
+          "AATS3are",
+          "AATSC1dv",
+          "AATSC2Z",
+          "AATSC2dv"
+        ],
+        "pass3": [
+          "AATS0are",
+          "AATS3are",
+          "AATSC1dv",
+          "AATSC2Z",
+          "AATSC2dv",
+          "ATSC0c",
+          "ATSC1dv",
+          "GATS1dv",
+          "GATS2dv",
+          "GATS4c",
+          "JGI2",
+          "MinAbsPartialCharge",
+          "PEOE_VSA14",
+          "SdsCH"
+        ]
+      },
+      "total_alternatives": 50
+    },
+    "n6aHRing_1": {
+      "cluster_size": 5,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "NumAromaticHeterocycles",
+        "SaaN",
+        "SddsN",
+        "naHRing_1"
+      ],
+      "all_cluster_members": [
+        "NumAromaticHeterocycles",
+        "SaaN",
+        "SddsN",
+        "n6aHRing_1",
+        "naHRing_1"
+      ],
+      "removal_history": {
+        "pass2": [
+          "NumAromaticHeterocycles"
+        ],
+        "pass3": [
+          "NumAromaticHeterocycles",
+          "SaaN",
+          "SddsN"
+        ]
+      },
+      "total_alternatives": 4
+    },
+    "PEOE_VSA2": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "PEOE_VSA2"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "AXp-4d": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "JGI3",
+        "JGT10"
+      ],
+      "all_cluster_members": [
+        "AXp-4d",
+        "JGI3",
+        "JGT10"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "JGI3",
+          "JGT10"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "NdsCH": {
+      "cluster_size": 24,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS0i",
+        "AATS1i",
+        "AATS2i",
+        "AATSC3i",
+        "ATSC3i",
+        "FilterItLogS",
+        "GATS3are",
+        "GATS3pe",
+        "GATS3se",
+        "MATS3i",
+        "Mi",
+        "NHOHCount",
+        "NdO",
+        "NsCH3",
+        "NssCH2",
+        "NumHDonors",
+        "PEOE_VSA8",
+        "SdO",
+        "SsCH3",
+        "VSA_EState2",
+        "nAcid",
+        "nBondsD",
+        "nHBDon"
+      ],
+      "all_cluster_members": [
+        "AATS0i",
+        "AATS1i",
+        "AATS2i",
+        "AATSC3i",
+        "ATSC3i",
+        "FilterItLogS",
+        "GATS3are",
+        "GATS3pe",
+        "GATS3se",
+        "MATS3i",
+        "Mi",
+        "NHOHCount",
+        "NdO",
+        "NdsCH",
+        "NsCH3",
+        "NssCH2",
+        "NumHDonors",
+        "PEOE_VSA8",
+        "SdO",
+        "SsCH3",
+        "VSA_EState2",
+        "nAcid",
+        "nBondsD",
+        "nHBDon"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATS0i",
+          "ATSC3i",
+          "GATS3are",
+          "NHOHCount",
+          "NdO",
+          "NsCH3"
+        ],
+        "pass3": [
+          "AATS0i",
+          "AATS1i",
+          "AATS2i",
+          "ATSC3i",
+          "FilterItLogS",
+          "GATS3are",
+          "NHOHCount",
+          "NdO",
+          "NsCH3",
+          "NssCH2",
+          "PEOE_VSA8",
+          "nBondsD"
+        ]
+      },
+      "total_alternatives": 23
+    },
+    "VSA_EState7": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "VSA_EState7"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "ATSC5i": {
+      "cluster_size": 15,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC2d",
+        "AATSC5i",
+        "AATSC5p",
+        "ATSC2d",
+        "ATSC5p",
+        "ATSC5v",
+        "BalabanJ",
+        "GATS5i",
+        "GATS5p",
+        "GATS5v",
+        "MATS2d",
+        "MATS5i",
+        "MATS5p",
+        "NumRadicalElectrons"
+      ],
+      "all_cluster_members": [
+        "AATSC2d",
+        "AATSC5i",
+        "AATSC5p",
+        "ATSC2d",
+        "ATSC5i",
+        "ATSC5p",
+        "ATSC5v",
+        "BalabanJ",
+        "GATS5i",
+        "GATS5p",
+        "GATS5v",
+        "MATS2d",
+        "MATS5i",
+        "MATS5p",
+        "NumRadicalElectrons"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC2d",
+          "AATSC5i"
+        ],
+        "pass3": [
+          "AATSC2d",
+          "AATSC5i",
+          "ATSC2d",
+          "ATSC5v",
+          "BalabanJ",
+          "GATS5v",
+          "NumRadicalElectrons"
+        ]
+      },
+      "total_alternatives": 14
+    },
+    "MATS4Z": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "GATS4Z",
+        "GATS4m",
+        "MATS4m"
+      ],
+      "all_cluster_members": [
+        "GATS4Z",
+        "GATS4m",
+        "MATS4Z",
+        "MATS4m"
+      ],
+      "removal_history": {
+        "pass2": [
+          "GATS4Z"
+        ],
+        "pass3": [
+          "GATS4Z"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "PEOE_VSA4": {
+      "cluster_size": 328,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS0Z",
+        "AATS0d",
+        "AATS0m",
+        "AATS0p",
+        "AATS0v",
+        "AATS1d",
+        "AATS1p",
+        "AATS2d",
+        "AATS2p",
+        "AATS2v",
+        "AATS3d",
+        "AATS3i",
+        "AATS3p",
+        "AATS3v",
+        "AATSC0Z",
+        "AATSC0i",
+        "AATSC0m",
+        "AATSC0p",
+        "AATSC0v",
+        "AMW",
+        "ATS0Z",
+        "ATS0are",
+        "ATS0d",
+        "ATS0dv",
+        "ATS0i",
+        "ATS0m",
+        "ATS0p",
+        "ATS0pe",
+        "ATS0se",
+        "ATS0v",
+        "ATS1Z",
+        "ATS1are",
+        "ATS1d",
+        "ATS1dv",
+        "ATS1i",
+        "ATS1m",
+        "ATS1p",
+        "ATS1pe",
+        "ATS1se",
+        "ATS1v",
+        "ATS2Z",
+        "ATS2are",
+        "ATS2d",
+        "ATS2dv",
+        "ATS2i",
+        "ATS2m",
+        "ATS2p",
+        "ATS2pe",
+        "ATS2se",
+        "ATS2v",
+        "ATS3Z",
+        "ATS3are",
+        "ATS3d",
+        "ATS3dv",
+        "ATS3i",
+        "ATS3m",
+        "ATS3p",
+        "ATS3pe",
+        "ATS3se",
+        "ATS3v",
+        "ATS4Z",
+        "ATS4are",
+        "ATS4d",
+        "ATS4dv",
+        "ATS4i",
+        "ATS4m",
+        "ATS4p",
+        "ATS4pe",
+        "ATS4se",
+        "ATS4v",
+        "ATS5Z",
+        "ATS5are",
+        "ATS5d",
+        "ATS5dv",
+        "ATS5i",
+        "ATS5m",
+        "ATS5p",
+        "ATS5pe",
+        "ATS5se",
+        "ATS5v",
+        "ATS6Z",
+        "ATS6are",
+        "ATS6d",
+        "ATS6dv",
+        "ATS6i",
+        "ATS6m",
+        "ATS6p",
+        "ATS6pe",
+        "ATS6se",
+        "ATS6v",
+        "ATS7Z",
+        "ATS7are",
+        "ATS7d",
+        "ATS7dv",
+        "ATS7i",
+        "ATS7m",
+        "ATS7p",
+        "ATS7pe",
+        "ATS7se",
+        "ATS7v",
+        "ATS8Z",
+        "ATS8are",
+        "ATS8d",
+        "ATS8dv",
+        "ATS8i",
+        "ATS8m",
+        "ATS8p",
+        "ATS8pe",
+        "ATS8se",
+        "ATS8v",
+        "ATSC0Z",
+        "ATSC0are",
+        "ATSC0d",
+        "ATSC0dv",
+        "ATSC0i",
+        "ATSC0m",
+        "ATSC0p",
+        "ATSC0pe",
+        "ATSC0se",
+        "ATSC0v",
+        "AXp-1d",
+        "AXp-2d",
+        "AvgIpc",
+        "BIC0",
+        "BIC1",
+        "BIC2",
+        "BIC3",
+        "BIC4",
+        "BIC5",
+        "BertzCT",
+        "C2SP2",
+        "CIC0",
+        "CIC1",
+        "CIC2",
+        "CIC3",
+        "CIC4",
+        "CIC5",
+        "Chi0",
+        "Chi0n",
+        "Chi0v",
+        "Chi1",
+        "Chi1n",
+        "Chi1v",
+        "Chi2n",
+        "Chi2v",
+        "Chi3n",
+        "Chi3v",
+        "Chi4n",
+        "Chi4v",
+        "ECIndex",
+        "ExactMolWt",
+        "GATS1Z",
+        "GATS1i",
+        "GATS1m",
+        "GATS1p",
+        "GATS1v",
+        "GGI1",
+        "GGI2",
+        "GGI3",
+        "GGI4",
+        "GGI5",
+        "GGI6",
+        "GGI7",
+        "GhoseFilter",
+        "HeavyAtomCount",
+        "HeavyAtomMolWt",
+        "IC1",
+        "IC2",
+        "IC3",
+        "IC4",
+        "IC5",
+        "Ipc",
+        "Kappa1",
+        "Kappa2",
+        "Kappa3",
+        "Kier1",
+        "Kier2",
+        "Kier3",
+        "LabuteASA",
+        "MIC0",
+        "MIC1",
+        "MIC2",
+        "MIC3",
+        "MIC4",
+        "MIC5",
+        "MPC10",
+        "MPC2",
+        "MPC3",
+        "MPC4",
+        "MPC5",
+        "MPC6",
+        "MPC7",
+        "MPC8",
+        "MPC9",
+        "MW",
+        "MWC01",
+        "MWC02",
+        "MWC03",
+        "MWC04",
+        "MWC05",
+        "MWC06",
+        "MWC07",
+        "MWC08",
+        "MWC09",
+        "MWC10",
+        "MZ",
+        "Mm",
+        "MolMR",
+        "MolWt",
+        "Mp",
+        "Mv",
+        "NOCount",
+        "NaaCH",
+        "NumAromaticCarbocycles",
+        "NumHAcceptors",
+        "NumHeteroatoms",
+        "NumValenceElectrons",
+        "PEOE_VSA1",
+        "Phi",
+        "RNCG",
+        "RingCount",
+        "SIC0",
+        "SIC1",
+        "SIC2",
+        "SIC3",
+        "SIC4",
+        "SIC5",
+        "SMR",
+        "SMR_VSA7",
+        "SRW02",
+        "SRW04",
+        "SRW06",
+        "SRW08",
+        "SRW10",
+        "SZ",
+        "SaaCH",
+        "Sare",
+        "Si",
+        "SlogP_VSA12",
+        "SlogP_VSA6",
+        "Sm",
+        "Sp",
+        "Spe",
+        "SsSH",
+        "Sse",
+        "Sv",
+        "TIC0",
+        "TIC1",
+        "TIC2",
+        "TIC3",
+        "TIC4",
+        "TIC5",
+        "TMPC10",
+        "TMWC10",
+        "TPSA",
+        "TSRW10",
+        "TopoPSA",
+        "TopoPSA(NO)",
+        "TpiPC10",
+        "VAdjMat",
+        "VMcGowan",
+        "WPath",
+        "WPol",
+        "Xc-3d",
+        "Xc-3dv",
+        "Xp-1d",
+        "Xp-1dv",
+        "Xp-2d",
+        "Xp-2dv",
+        "Xp-3d",
+        "Xp-3dv",
+        "Xp-4d",
+        "Xp-4dv",
+        "Xp-5d",
+        "Xp-5dv",
+        "Xp-6d",
+        "Xp-6dv",
+        "Xp-7d",
+        "Xp-7dv",
+        "Xpc-4d",
+        "Xpc-4dv",
+        "Xpc-5d",
+        "Xpc-5dv",
+        "Xpc-6d",
+        "Xpc-6dv",
+        "ZMIC0",
+        "ZMIC1",
+        "ZMIC2",
+        "ZMIC3",
+        "ZMIC4",
+        "ZMIC5",
+        "Zagreb1",
+        "Zagreb2",
+        "apol",
+        "bpol",
+        "fr_benzene",
+        "fragCpx",
+        "mZagreb2",
+        "n6Ring",
+        "n6aRing_1",
+        "nAromAtom",
+        "nAromBond",
+        "nAtom",
+        "nBonds",
+        "nBondsA",
+        "nBondsKD",
+        "nBondsKS",
+        "nBondsM",
+        "nBondsO",
+        "nBondsS",
+        "nC",
+        "nH",
+        "nHBAcc",
+        "nHeavyAtom",
+        "nHetero",
+        "nO",
+        "nRing",
+        "nS",
+        "piPC1",
+        "piPC2",
+        "piPC3",
+        "piPC4",
+        "piPC5",
+        "piPC6",
+        "piPC7",
+        "piPC8",
+        "piPC9"
+      ],
+      "all_cluster_members": [
+        "AATS0Z",
+        "AATS0d",
+        "AATS0m",
+        "AATS0p",
+        "AATS0v",
+        "AATS1d",
+        "AATS1p",
+        "AATS2d",
+        "AATS2p",
+        "AATS2v",
+        "AATS3d",
+        "AATS3i",
+        "AATS3p",
+        "AATS3v",
+        "AATSC0Z",
+        "AATSC0i",
+        "AATSC0m",
+        "AATSC0p",
+        "AATSC0v",
+        "AMW",
+        "ATS0Z",
+        "ATS0are",
+        "ATS0d",
+        "ATS0dv",
+        "ATS0i",
+        "ATS0m",
+        "ATS0p",
+        "ATS0pe",
+        "ATS0se",
+        "ATS0v",
+        "ATS1Z",
+        "ATS1are",
+        "ATS1d",
+        "ATS1dv",
+        "ATS1i",
+        "ATS1m",
+        "ATS1p",
+        "ATS1pe",
+        "ATS1se",
+        "ATS1v",
+        "ATS2Z",
+        "ATS2are",
+        "ATS2d",
+        "ATS2dv",
+        "ATS2i",
+        "ATS2m",
+        "ATS2p",
+        "ATS2pe",
+        "ATS2se",
+        "ATS2v",
+        "ATS3Z",
+        "ATS3are",
+        "ATS3d",
+        "ATS3dv",
+        "ATS3i",
+        "ATS3m",
+        "ATS3p",
+        "ATS3pe",
+        "ATS3se",
+        "ATS3v",
+        "ATS4Z",
+        "ATS4are",
+        "ATS4d",
+        "ATS4dv",
+        "ATS4i",
+        "ATS4m",
+        "ATS4p",
+        "ATS4pe",
+        "ATS4se",
+        "ATS4v",
+        "ATS5Z",
+        "ATS5are",
+        "ATS5d",
+        "ATS5dv",
+        "ATS5i",
+        "ATS5m",
+        "ATS5p",
+        "ATS5pe",
+        "ATS5se",
+        "ATS5v",
+        "ATS6Z",
+        "ATS6are",
+        "ATS6d",
+        "ATS6dv",
+        "ATS6i",
+        "ATS6m",
+        "ATS6p",
+        "ATS6pe",
+        "ATS6se",
+        "ATS6v",
+        "ATS7Z",
+        "ATS7are",
+        "ATS7d",
+        "ATS7dv",
+        "ATS7i",
+        "ATS7m",
+        "ATS7p",
+        "ATS7pe",
+        "ATS7se",
+        "ATS7v",
+        "ATS8Z",
+        "ATS8are",
+        "ATS8d",
+        "ATS8dv",
+        "ATS8i",
+        "ATS8m",
+        "ATS8p",
+        "ATS8pe",
+        "ATS8se",
+        "ATS8v",
+        "ATSC0Z",
+        "ATSC0are",
+        "ATSC0d",
+        "ATSC0dv",
+        "ATSC0i",
+        "ATSC0m",
+        "ATSC0p",
+        "ATSC0pe",
+        "ATSC0se",
+        "ATSC0v",
+        "AXp-1d",
+        "AXp-2d",
+        "AvgIpc",
+        "BIC0",
+        "BIC1",
+        "BIC2",
+        "BIC3",
+        "BIC4",
+        "BIC5",
+        "BertzCT",
+        "C2SP2",
+        "CIC0",
+        "CIC1",
+        "CIC2",
+        "CIC3",
+        "CIC4",
+        "CIC5",
+        "Chi0",
+        "Chi0n",
+        "Chi0v",
+        "Chi1",
+        "Chi1n",
+        "Chi1v",
+        "Chi2n",
+        "Chi2v",
+        "Chi3n",
+        "Chi3v",
+        "Chi4n",
+        "Chi4v",
+        "ECIndex",
+        "ExactMolWt",
+        "GATS1Z",
+        "GATS1i",
+        "GATS1m",
+        "GATS1p",
+        "GATS1v",
+        "GGI1",
+        "GGI2",
+        "GGI3",
+        "GGI4",
+        "GGI5",
+        "GGI6",
+        "GGI7",
+        "GhoseFilter",
+        "HeavyAtomCount",
+        "HeavyAtomMolWt",
+        "IC1",
+        "IC2",
+        "IC3",
+        "IC4",
+        "IC5",
+        "Ipc",
+        "Kappa1",
+        "Kappa2",
+        "Kappa3",
+        "Kier1",
+        "Kier2",
+        "Kier3",
+        "LabuteASA",
+        "MIC0",
+        "MIC1",
+        "MIC2",
+        "MIC3",
+        "MIC4",
+        "MIC5",
+        "MPC10",
+        "MPC2",
+        "MPC3",
+        "MPC4",
+        "MPC5",
+        "MPC6",
+        "MPC7",
+        "MPC8",
+        "MPC9",
+        "MW",
+        "MWC01",
+        "MWC02",
+        "MWC03",
+        "MWC04",
+        "MWC05",
+        "MWC06",
+        "MWC07",
+        "MWC08",
+        "MWC09",
+        "MWC10",
+        "MZ",
+        "Mm",
+        "MolMR",
+        "MolWt",
+        "Mp",
+        "Mv",
+        "NOCount",
+        "NaaCH",
+        "NumAromaticCarbocycles",
+        "NumHAcceptors",
+        "NumHeteroatoms",
+        "NumValenceElectrons",
+        "PEOE_VSA1",
+        "PEOE_VSA4",
+        "Phi",
+        "RNCG",
+        "RingCount",
+        "SIC0",
+        "SIC1",
+        "SIC2",
+        "SIC3",
+        "SIC4",
+        "SIC5",
+        "SMR",
+        "SMR_VSA7",
+        "SRW02",
+        "SRW04",
+        "SRW06",
+        "SRW08",
+        "SRW10",
+        "SZ",
+        "SaaCH",
+        "Sare",
+        "Si",
+        "SlogP_VSA12",
+        "SlogP_VSA6",
+        "Sm",
+        "Sp",
+        "Spe",
+        "SsSH",
+        "Sse",
+        "Sv",
+        "TIC0",
+        "TIC1",
+        "TIC2",
+        "TIC3",
+        "TIC4",
+        "TIC5",
+        "TMPC10",
+        "TMWC10",
+        "TPSA",
+        "TSRW10",
+        "TopoPSA",
+        "TopoPSA(NO)",
+        "TpiPC10",
+        "VAdjMat",
+        "VMcGowan",
+        "WPath",
+        "WPol",
+        "Xc-3d",
+        "Xc-3dv",
+        "Xp-1d",
+        "Xp-1dv",
+        "Xp-2d",
+        "Xp-2dv",
+        "Xp-3d",
+        "Xp-3dv",
+        "Xp-4d",
+        "Xp-4dv",
+        "Xp-5d",
+        "Xp-5dv",
+        "Xp-6d",
+        "Xp-6dv",
+        "Xp-7d",
+        "Xp-7dv",
+        "Xpc-4d",
+        "Xpc-4dv",
+        "Xpc-5d",
+        "Xpc-5dv",
+        "Xpc-6d",
+        "Xpc-6dv",
+        "ZMIC0",
+        "ZMIC1",
+        "ZMIC2",
+        "ZMIC3",
+        "ZMIC4",
+        "ZMIC5",
+        "Zagreb1",
+        "Zagreb2",
+        "apol",
+        "bpol",
+        "fr_benzene",
+        "fragCpx",
+        "mZagreb2",
+        "n6Ring",
+        "n6aRing_1",
+        "nAromAtom",
+        "nAromBond",
+        "nAtom",
+        "nBonds",
+        "nBondsA",
+        "nBondsKD",
+        "nBondsKS",
+        "nBondsM",
+        "nBondsO",
+        "nBondsS",
+        "nC",
+        "nH",
+        "nHBAcc",
+        "nHeavyAtom",
+        "nHetero",
+        "nO",
+        "nRing",
+        "nS",
+        "piPC1",
+        "piPC2",
+        "piPC3",
+        "piPC4",
+        "piPC5",
+        "piPC6",
+        "piPC7",
+        "piPC8",
+        "piPC9"
+      ],
+      "removal_history": {
+        "pass2": [
+          "IC2",
+          "Ipc"
+        ],
+        "pass3": [
+          "GhoseFilter",
+          "IC1",
+          "IC2",
+          "Ipc",
+          "SlogP_VSA12",
+          "nS"
+        ]
+      },
+      "total_alternatives": 327
+    },
+    "MATS2c": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC2c",
+        "ATSC2c",
+        "GATS2c"
+      ],
+      "all_cluster_members": [
+        "AATSC2c",
+        "ATSC2c",
+        "GATS2c",
+        "MATS2c"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "AATSC2c",
+          "ATSC2c",
+          "GATS2c"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "SssCH2": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "EState_VSA3",
+        "VSA_EState8"
+      ],
+      "all_cluster_members": [
+        "EState_VSA3",
+        "SssCH2",
+        "VSA_EState8"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "EState_VSA3",
+          "VSA_EState8"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "SdCH2": {
+      "cluster_size": 8,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "JGI4",
+        "MAXdO",
+        "MINdO",
+        "MaxAbsEStateIndex",
+        "MaxEStateIndex",
+        "SMR_VSA9",
+        "SlogP_VSA11"
+      ],
+      "all_cluster_members": [
+        "JGI4",
+        "MAXdO",
+        "MINdO",
+        "MaxAbsEStateIndex",
+        "MaxEStateIndex",
+        "SMR_VSA9",
+        "SdCH2",
+        "SlogP_VSA11"
+      ],
+      "removal_history": {
+        "pass2": [
+          "MAXdO",
+          "MaxAbsEStateIndex",
+          "SMR_VSA9"
+        ],
+        "pass3": [
+          "JGI4",
+          "MAXdO",
+          "MaxAbsEStateIndex",
+          "SMR_VSA9"
+        ]
+      },
+      "total_alternatives": 7
+    },
+    "PEOE_VSA13": {
+      "cluster_size": 37,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS1v",
+        "AATS3dv",
+        "AATSC1are",
+        "AATSC1c",
+        "AATSC1pe",
+        "AATSC1se",
+        "AATSC4are",
+        "AATSC4dv",
+        "AATSC4pe",
+        "AATSC4se",
+        "ATSC1are",
+        "ATSC1c",
+        "ATSC1pe",
+        "ATSC1se",
+        "AXp-3d",
+        "EState_VSA1",
+        "GATS1are",
+        "GATS1pe",
+        "GATS1se",
+        "GATS4are",
+        "GATS4dv",
+        "GATS4pe",
+        "GATS4se",
+        "MATS1are",
+        "MATS1pe",
+        "MATS1se",
+        "MATS4are",
+        "MATS4dv",
+        "MATS4pe",
+        "MATS4se",
+        "SdssC",
+        "VSA_EState3",
+        "VSA_EState5",
+        "fr_COO",
+        "fr_COO2",
+        "fr_C_O"
+      ],
+      "all_cluster_members": [
+        "AATS1v",
+        "AATS3dv",
+        "AATSC1are",
+        "AATSC1c",
+        "AATSC1pe",
+        "AATSC1se",
+        "AATSC4are",
+        "AATSC4dv",
+        "AATSC4pe",
+        "AATSC4se",
+        "ATSC1are",
+        "ATSC1c",
+        "ATSC1pe",
+        "ATSC1se",
+        "AXp-3d",
+        "EState_VSA1",
+        "GATS1are",
+        "GATS1pe",
+        "GATS1se",
+        "GATS4are",
+        "GATS4dv",
+        "GATS4pe",
+        "GATS4se",
+        "MATS1are",
+        "MATS1pe",
+        "MATS1se",
+        "MATS4are",
+        "MATS4dv",
+        "MATS4pe",
+        "MATS4se",
+        "PEOE_VSA13",
+        "SdssC",
+        "VSA_EState3",
+        "VSA_EState5",
+        "fr_COO",
+        "fr_COO2",
+        "fr_C_O"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC1are",
+          "AATSC4are",
+          "ATSC1are",
+          "EState_VSA1"
+        ],
+        "pass3": [
+          "AATS1v",
+          "AATS3dv",
+          "AATSC1are",
+          "AATSC1c",
+          "AATSC4are",
+          "ATSC1are",
+          "ATSC1c",
+          "AXp-3d",
+          "EState_VSA1",
+          "VSA_EState3"
+        ]
+      },
+      "total_alternatives": 36
+    },
+    "AATSC2i": {
+      "cluster_size": 12,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC2p",
+        "AATSC2v",
+        "ATSC2i",
+        "ATSC2p",
+        "ATSC2v",
+        "GATS2i",
+        "GATS2p",
+        "GATS2v",
+        "MATS2i",
+        "MATS2p",
+        "MATS2v"
+      ],
+      "all_cluster_members": [
+        "AATSC2i",
+        "AATSC2p",
+        "AATSC2v",
+        "ATSC2i",
+        "ATSC2p",
+        "ATSC2v",
+        "GATS2i",
+        "GATS2p",
+        "GATS2v",
+        "MATS2i",
+        "MATS2p",
+        "MATS2v"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC2v",
+          "GATS2i"
+        ],
+        "pass3": [
+          "AATSC2p",
+          "AATSC2v",
+          "ATSC2i",
+          "ATSC2p",
+          "ATSC2v",
+          "GATS2i",
+          "MATS2i",
+          "MATS2p"
+        ]
+      },
+      "total_alternatives": 11
+    },
+    "ATSC8d": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "GGI10",
+        "JGI10"
+      ],
+      "all_cluster_members": [
+        "ATSC8d",
+        "GGI10",
+        "JGI10"
+      ],
+      "removal_history": {
+        "pass2": [
+          "GGI10"
+        ],
+        "pass3": [
+          "GGI10"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "fr_para_hydroxylation": {
+      "cluster_size": 5,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "NaasC",
+        "fr_Ar_OH",
+        "fr_phenol",
+        "fr_phenol_noOrthoHbond"
+      ],
+      "all_cluster_members": [
+        "NaasC",
+        "fr_Ar_OH",
+        "fr_para_hydroxylation",
+        "fr_phenol",
+        "fr_phenol_noOrthoHbond"
+      ],
+      "removal_history": {
+        "pass2": [
+          "fr_Ar_OH"
+        ],
+        "pass3": [
+          "NaasC",
+          "fr_Ar_OH"
+        ]
+      },
+      "total_alternatives": 4
+    },
+    "Lipinski": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "SPS"
+      ],
+      "all_cluster_members": [
+        "Lipinski",
+        "SPS"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "SPS"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "MATS1p": {
+      "cluster_size": 14,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC0d",
+        "AATSC1i",
+        "AATSC1p",
+        "AATSC1v",
+        "ATSC1i",
+        "ATSC1p",
+        "ATSC1v",
+        "FpDensityMorgan1",
+        "FpDensityMorgan2",
+        "FpDensityMorgan3",
+        "JGI1",
+        "MATS1i",
+        "MATS1v"
+      ],
+      "all_cluster_members": [
+        "AATSC0d",
+        "AATSC1i",
+        "AATSC1p",
+        "AATSC1v",
+        "ATSC1i",
+        "ATSC1p",
+        "ATSC1v",
+        "FpDensityMorgan1",
+        "FpDensityMorgan2",
+        "FpDensityMorgan3",
+        "JGI1",
+        "MATS1i",
+        "MATS1p",
+        "MATS1v"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC1i",
+          "AATSC1p",
+          "AATSC1v",
+          "FpDensityMorgan2"
+        ],
+        "pass3": [
+          "AATSC0d",
+          "AATSC1i",
+          "AATSC1p",
+          "AATSC1v",
+          "FpDensityMorgan1",
+          "FpDensityMorgan2",
+          "JGI1"
+        ]
+      },
+      "total_alternatives": 13
+    },
+    "ATSC8c": {
+      "cluster_size": 7,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC0c",
+        "ATSC8are",
+        "ATSC8dv",
+        "ATSC8pe",
+        "ATSC8se",
+        "EState_VSA7"
+      ],
+      "all_cluster_members": [
+        "AATSC0c",
+        "ATSC8are",
+        "ATSC8c",
+        "ATSC8dv",
+        "ATSC8pe",
+        "ATSC8se",
+        "EState_VSA7"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC8are"
+        ],
+        "pass3": [
+          "AATSC0c",
+          "ATSC8are",
+          "ATSC8dv",
+          "EState_VSA7"
+        ]
+      },
+      "total_alternatives": 6
+    },
+    "ATSC7c": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC4i"
+      ],
+      "all_cluster_members": [
+        "ATSC4i",
+        "ATSC7c"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "ATSC4i"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "C3SP3": {
+      "cluster_size": 10,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "NssssC",
+        "SssssC",
+        "VSA_EState1",
+        "VSA_EState4",
+        "VSA_EState9",
+        "Xc-4d",
+        "Xc-5d",
+        "Xc-5dv",
+        "Xc-6d"
+      ],
+      "all_cluster_members": [
+        "C3SP3",
+        "NssssC",
+        "SssssC",
+        "VSA_EState1",
+        "VSA_EState4",
+        "VSA_EState9",
+        "Xc-4d",
+        "Xc-5d",
+        "Xc-5dv",
+        "Xc-6d"
+      ],
+      "removal_history": {
+        "pass2": [
+          "NssssC",
+          "Xc-4d",
+          "Xc-5d"
+        ],
+        "pass3": [
+          "NssssC",
+          "VSA_EState1",
+          "VSA_EState4",
+          "VSA_EState9",
+          "Xc-4d",
+          "Xc-5d"
+        ]
+      },
+      "total_alternatives": 9
+    },
+    "NsNH2": {
+      "cluster_size": 5,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "SMR_VSA4",
+        "SsNH2",
+        "fr_NH2",
+        "nBase"
+      ],
+      "all_cluster_members": [
+        "NsNH2",
+        "SMR_VSA4",
+        "SsNH2",
+        "fr_NH2",
+        "nBase"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "SMR_VSA4",
+          "nBase"
+        ]
+      },
+      "total_alternatives": 4
+    },
+    "SlogP_VSA4": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "NumAromaticRings",
+        "SMR_VSA1",
+        "naRing_1"
+      ],
+      "all_cluster_members": [
+        "NumAromaticRings",
+        "SMR_VSA1",
+        "SlogP_VSA4",
+        "naRing_1"
+      ],
+      "removal_history": {
+        "pass2": [
+          "NumAromaticRings"
+        ],
+        "pass3": [
+          "NumAromaticRings",
+          "SMR_VSA1"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "PEOE_VSA11": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "PEOE_VSA11"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "ATSC6Z": {
+      "cluster_size": 7,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC6are",
+        "ATSC6c",
+        "ATSC6dv",
+        "ATSC6m",
+        "ATSC6pe",
+        "ATSC6se"
+      ],
+      "all_cluster_members": [
+        "ATSC6Z",
+        "ATSC6are",
+        "ATSC6c",
+        "ATSC6dv",
+        "ATSC6m",
+        "ATSC6pe",
+        "ATSC6se"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC6are"
+        ],
+        "pass3": [
+          "ATSC6are",
+          "ATSC6c"
+        ]
+      },
+      "total_alternatives": 6
+    },
+    "SRW05": {
+      "cluster_size": 8,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "SRW07",
+        "SRW09",
+        "Xch-7d",
+        "n5HRing",
+        "n5Ring",
+        "n5aHRing_1",
+        "n5aRing_1"
+      ],
+      "all_cluster_members": [
+        "SRW05",
+        "SRW07",
+        "SRW09",
+        "Xch-7d",
+        "n5HRing",
+        "n5Ring",
+        "n5aHRing_1",
+        "n5aRing_1"
+      ],
+      "removal_history": {
+        "pass2": [
+          "n5aHRing_1"
+        ],
+        "pass3": [
+          "Xch-7d",
+          "n5aHRing_1"
+        ]
+      },
+      "total_alternatives": 7
+    },
+    "SlogP_VSA8": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "GATS2d",
+        "nN"
+      ],
+      "all_cluster_members": [
+        "GATS2d",
+        "SlogP_VSA8",
+        "nN"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "GATS2d",
+          "nN"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "EState_VSA5": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "EState_VSA5"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "SssNH": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "C1SP3",
+        "EState_VSA4",
+        "NssNH",
+        "SMR_VSA3",
+        "Xch-6d",
+        "Xch-6dv",
+        "Xch-7dv",
+        "fr_NH1"
+      ],
+      "all_cluster_members": [
+        "C1SP3",
+        "EState_VSA4",
+        "NssNH",
+        "SMR_VSA3",
+        "SssNH",
+        "Xch-6d",
+        "Xch-6dv",
+        "Xch-7dv",
+        "fr_NH1"
+      ],
+      "removal_history": {
+        "pass2": [
+          "NssNH"
+        ],
+        "pass3": [
+          "C1SP3",
+          "EState_VSA4",
+          "NssNH",
+          "SMR_VSA3",
+          "Xch-6d",
+          "Xch-6dv",
+          "Xch-7dv"
+        ]
+      },
+      "total_alternatives": 8
+    },
+    "JGI6": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "JGI6"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "PEOE_VSA10": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "PEOE_VSA7"
+      ],
+      "all_cluster_members": [
+        "PEOE_VSA10",
+        "PEOE_VSA7"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "PEOE_VSA7"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "Xch-4d": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "Xch-4dv",
+        "Xch-5d",
+        "Xch-5dv"
+      ],
+      "all_cluster_members": [
+        "Xch-4d",
+        "Xch-4dv",
+        "Xch-5d",
+        "Xch-5dv"
+      ],
+      "removal_history": {
+        "pass2": [
+          "Xch-5d"
+        ],
+        "pass3": [
+          "Xch-5d"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "EState_VSA6": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "PEOE_VSA6"
+      ],
+      "all_cluster_members": [
+        "EState_VSA6",
+        "PEOE_VSA6"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "PEOE_VSA6"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "AATSC1Z": {
+      "cluster_size": 15,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC1m",
+        "ATSC1Z",
+        "ATSC1m",
+        "EState_VSA9",
+        "MATS1Z",
+        "MATS1m",
+        "MinEStateIndex",
+        "MolLogP",
+        "NsOH",
+        "SLogP",
+        "SMR_VSA10",
+        "SlogP_VSA2",
+        "SlogP_VSA3",
+        "SsOH"
+      ],
+      "all_cluster_members": [
+        "AATSC1Z",
+        "AATSC1m",
+        "ATSC1Z",
+        "ATSC1m",
+        "EState_VSA9",
+        "MATS1Z",
+        "MATS1m",
+        "MinEStateIndex",
+        "MolLogP",
+        "NsOH",
+        "SLogP",
+        "SMR_VSA10",
+        "SlogP_VSA2",
+        "SlogP_VSA3",
+        "SsOH"
+      ],
+      "removal_history": {
+        "pass2": [
+          "MolLogP",
+          "NsOH"
+        ],
+        "pass3": [
+          "EState_VSA9",
+          "MinEStateIndex",
+          "MolLogP",
+          "NsOH",
+          "SMR_VSA10",
+          "SlogP_VSA2",
+          "SlogP_VSA3"
+        ]
+      },
+      "total_alternatives": 14
+    },
+    "ATSC4are": {
+      "cluster_size": 18,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC4Z",
+        "AATSC4i",
+        "AATSC4m",
+        "AATSC4p",
+        "AATSC4v",
+        "ATSC4Z",
+        "ATSC4dv",
+        "ATSC4m",
+        "ATSC4p",
+        "ATSC4pe",
+        "ATSC4se",
+        "ATSC4v",
+        "GATS4i",
+        "GATS4p",
+        "MATS4i",
+        "MATS4p",
+        "MATS4v"
+      ],
+      "all_cluster_members": [
+        "AATSC4Z",
+        "AATSC4i",
+        "AATSC4m",
+        "AATSC4p",
+        "AATSC4v",
+        "ATSC4Z",
+        "ATSC4are",
+        "ATSC4dv",
+        "ATSC4m",
+        "ATSC4p",
+        "ATSC4pe",
+        "ATSC4se",
+        "ATSC4v",
+        "GATS4i",
+        "GATS4p",
+        "MATS4i",
+        "MATS4p",
+        "MATS4v"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC4Z",
+          "ATSC4p",
+          "ATSC4v"
+        ],
+        "pass3": [
+          "ATSC4Z",
+          "ATSC4p",
+          "ATSC4v"
+        ]
+      },
+      "total_alternatives": 17
+    },
+    "NaaO": {
+      "cluster_size": 7,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "C1SP2",
+        "GATS2Z",
+        "GATS2m",
+        "GATS5Z",
+        "GATS5m",
+        "SaaO"
+      ],
+      "all_cluster_members": [
+        "C1SP2",
+        "GATS2Z",
+        "GATS2m",
+        "GATS5Z",
+        "GATS5m",
+        "NaaO",
+        "SaaO"
+      ],
+      "removal_history": {
+        "pass2": [
+          "GATS2Z",
+          "GATS5Z"
+        ],
+        "pass3": [
+          "C1SP2",
+          "GATS2Z",
+          "GATS5Z"
+        ]
+      },
+      "total_alternatives": 6
+    },
+    "ATSC8v": {
+      "cluster_size": 6,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC8Z",
+        "ATSC8m",
+        "AXp-4dv",
+        "MDEC-33",
+        "MDEO-11"
+      ],
+      "all_cluster_members": [
+        "ATSC8Z",
+        "ATSC8m",
+        "ATSC8v",
+        "AXp-4dv",
+        "MDEC-33",
+        "MDEO-11"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC8Z"
+        ],
+        "pass3": [
+          "ATSC8Z",
+          "AXp-4dv",
+          "MDEC-33",
+          "MDEO-11"
+        ]
+      },
+      "total_alternatives": 5
+    },
+    "JGI8": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "GGI8",
+        "GGI9",
+        "JGI9"
+      ],
+      "all_cluster_members": [
+        "GGI8",
+        "GGI9",
+        "JGI8",
+        "JGI9"
+      ],
+      "removal_history": {
+        "pass2": [
+          "GGI8"
+        ],
+        "pass3": [
+          "GGI8"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "fr_Ar_COO": {
+      "cluster_size": 21,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS4d",
+        "AATS4i",
+        "AATS4p",
+        "AATSC3are",
+        "AATSC3dv",
+        "AATSC3pe",
+        "AATSC3se",
+        "ATSC3are",
+        "ATSC3dv",
+        "ATSC3pe",
+        "ATSC3se",
+        "GATS3dv",
+        "HallKierAlpha",
+        "MATS3are",
+        "MATS3dv",
+        "MATS3pe",
+        "MATS3se",
+        "NdssC",
+        "SaasC",
+        "fr_Al_COO"
+      ],
+      "all_cluster_members": [
+        "AATS4d",
+        "AATS4i",
+        "AATS4p",
+        "AATSC3are",
+        "AATSC3dv",
+        "AATSC3pe",
+        "AATSC3se",
+        "ATSC3are",
+        "ATSC3dv",
+        "ATSC3pe",
+        "ATSC3se",
+        "GATS3dv",
+        "HallKierAlpha",
+        "MATS3are",
+        "MATS3dv",
+        "MATS3pe",
+        "MATS3se",
+        "NdssC",
+        "SaasC",
+        "fr_Al_COO",
+        "fr_Ar_COO"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATS4d",
+          "AATSC3dv",
+          "ATSC3are"
+        ],
+        "pass3": [
+          "AATS4d",
+          "AATSC3dv",
+          "ATSC3are",
+          "ATSC3dv",
+          "HallKierAlpha",
+          "NdssC",
+          "SaasC",
+          "fr_Al_COO"
+        ]
+      },
+      "total_alternatives": 20
+    },
+    "fr_amidine": {
+      "cluster_size": 13,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "MinPartialCharge",
+        "NdsN",
+        "NumAliphaticHeterocycles",
+        "NumAliphaticRings",
+        "NumHeterocycles",
+        "NumSaturatedRings",
+        "SdsN",
+        "fr_oxime",
+        "n6HRing",
+        "nAHRing",
+        "nARing",
+        "nHRing"
+      ],
+      "all_cluster_members": [
+        "MinPartialCharge",
+        "NdsN",
+        "NumAliphaticHeterocycles",
+        "NumAliphaticRings",
+        "NumHeterocycles",
+        "NumSaturatedRings",
+        "SdsN",
+        "fr_amidine",
+        "fr_oxime",
+        "n6HRing",
+        "nAHRing",
+        "nARing",
+        "nHRing"
+      ],
+      "removal_history": {
+        "pass2": [
+          "NdsN",
+          "NumAliphaticHeterocycles",
+          "NumAliphaticRings",
+          "NumHeterocycles"
+        ],
+        "pass3": [
+          "MinPartialCharge",
+          "NdsN",
+          "NumAliphaticHeterocycles",
+          "NumAliphaticRings",
+          "NumHeterocycles"
+        ]
+      },
+      "total_alternatives": 12
+    },
+    "ATSC7Z": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC7are",
+        "ATSC7dv",
+        "ATSC7m",
+        "ATSC7pe",
+        "ATSC7se",
+        "ATSC7v",
+        "ATSC8i",
+        "ATSC8p"
+      ],
+      "all_cluster_members": [
+        "ATSC7Z",
+        "ATSC7are",
+        "ATSC7dv",
+        "ATSC7m",
+        "ATSC7pe",
+        "ATSC7se",
+        "ATSC7v",
+        "ATSC8i",
+        "ATSC8p"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC7are"
+        ],
+        "pass3": [
+          "ATSC7are",
+          "ATSC7v",
+          "ATSC8i",
+          "ATSC8p"
+        ]
+      },
+      "total_alternatives": 8
+    },
+    "NssO": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "JGI7",
+        "SssO",
+        "fr_ether"
+      ],
+      "all_cluster_members": [
+        "JGI7",
+        "NssO",
+        "SssO",
+        "fr_ether"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "JGI7"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "NaaaC": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC7p",
+        "piPC10"
+      ],
+      "all_cluster_members": [
+        "ATSC7p",
+        "NaaaC",
+        "piPC10"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "ATSC7p",
+          "piPC10"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "PetitjeanIndex": {
+      "cluster_size": 13,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "Diameter",
+        "EState_VSA2",
+        "FCSP3",
+        "FractionCSP3",
+        "HybRatio",
+        "MinAbsEStateIndex",
+        "NumRotatableBonds",
+        "Radius",
+        "RotRatio",
+        "TopoShapeIndex",
+        "nRot",
+        "qed"
+      ],
+      "all_cluster_members": [
+        "Diameter",
+        "EState_VSA2",
+        "FCSP3",
+        "FractionCSP3",
+        "HybRatio",
+        "MinAbsEStateIndex",
+        "NumRotatableBonds",
+        "PetitjeanIndex",
+        "Radius",
+        "RotRatio",
+        "TopoShapeIndex",
+        "nRot",
+        "qed"
+      ],
+      "removal_history": {
+        "pass2": [
+          "Diameter",
+          "FCSP3",
+          "NumRotatableBonds"
+        ],
+        "pass3": [
+          "Diameter",
+          "EState_VSA2",
+          "FCSP3",
+          "MinAbsEStateIndex",
+          "NumRotatableBonds",
+          "qed"
+        ]
+      },
+      "total_alternatives": 12
+    },
+    "EState_VSA8": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "C2SP3",
+        "MaxAbsPartialCharge",
+        "MaxPartialCharge",
+        "SMR_VSA5",
+        "SlogP_VSA10",
+        "SlogP_VSA5",
+        "fr_ArN",
+        "fr_aniline"
+      ],
+      "all_cluster_members": [
+        "C2SP3",
+        "EState_VSA8",
+        "MaxAbsPartialCharge",
+        "MaxPartialCharge",
+        "SMR_VSA5",
+        "SlogP_VSA10",
+        "SlogP_VSA5",
+        "fr_ArN",
+        "fr_aniline"
+      ],
+      "removal_history": {
+        "pass2": [
+          "MaxAbsPartialCharge",
+          "SMR_VSA5",
+          "SlogP_VSA10"
+        ],
+        "pass3": [
+          "C2SP3",
+          "MaxAbsPartialCharge",
+          "SMR_VSA5",
+          "SlogP_VSA10",
+          "fr_ArN"
+        ]
+      },
+      "total_alternatives": 8
+    },
+    "GATS3c": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "GATS3c"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "NumAmideBonds": {
+      "cluster_size": 14,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS5d",
+        "AATS5i",
+        "AATS5p",
+        "AATSC5d",
+        "ATSC5d",
+        "GATS5d",
+        "MATS5d",
+        "NsssN",
+        "SMR_VSA6",
+        "SsssN",
+        "fr_C_O_noCOO",
+        "fr_NH0",
+        "fr_amide"
+      ],
+      "all_cluster_members": [
+        "AATS5d",
+        "AATS5i",
+        "AATS5p",
+        "AATSC5d",
+        "ATSC5d",
+        "GATS5d",
+        "MATS5d",
+        "NsssN",
+        "NumAmideBonds",
+        "SMR_VSA6",
+        "SsssN",
+        "fr_C_O_noCOO",
+        "fr_NH0",
+        "fr_amide"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATS5d",
+          "AATSC5d"
+        ],
+        "pass3": [
+          "AATS5d",
+          "AATSC5d",
+          "ATSC5d",
+          "GATS5d",
+          "NsssN",
+          "SMR_VSA6",
+          "SsssN",
+          "fr_C_O_noCOO",
+          "fr_NH0"
+        ]
+      },
+      "total_alternatives": 13
+    },
+    "JGI5": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "fMF"
+      ],
+      "all_cluster_members": [
+        "JGI5",
+        "fMF"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "fMF"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "PEOE_VSA5": {
+      "cluster_size": 3,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "EState_VSA10",
+        "GATS4v"
+      ],
+      "all_cluster_members": [
+        "EState_VSA10",
+        "GATS4v",
+        "PEOE_VSA5"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "EState_VSA10",
+          "GATS4v"
+        ]
+      },
+      "total_alternatives": 2
+    },
+    "GATS3Z": {
+      "cluster_size": 8,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC3Z",
+        "AATSC3m",
+        "ATSC3Z",
+        "ATSC3m",
+        "GATS3m",
+        "MATS3Z",
+        "MATS3m"
+      ],
+      "all_cluster_members": [
+        "AATSC3Z",
+        "AATSC3m",
+        "ATSC3Z",
+        "ATSC3m",
+        "GATS3Z",
+        "GATS3m",
+        "MATS3Z",
+        "MATS3m"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC3Z",
+          "ATSC3Z"
+        ],
+        "pass3": [
+          "AATSC3Z",
+          "ATSC3Z"
+        ]
+      },
+      "total_alternatives": 7
+    },
+    "AATS5se": {
+      "cluster_size": 39,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATS4Z",
+        "AATS4are",
+        "AATS4dv",
+        "AATS4m",
+        "AATS4pe",
+        "AATS4se",
+        "AATS4v",
+        "AATS5Z",
+        "AATS5are",
+        "AATS5dv",
+        "AATS5m",
+        "AATS5pe",
+        "AATS5v",
+        "AATSC4d",
+        "AATSC5are",
+        "AATSC5c",
+        "AATSC5dv",
+        "AATSC5pe",
+        "AATSC5se",
+        "AATSC5v",
+        "ATSC4d",
+        "ATSC5are",
+        "ATSC5c",
+        "ATSC5dv",
+        "ATSC5pe",
+        "ATSC5se",
+        "GATS4d",
+        "GATS5are",
+        "GATS5dv",
+        "GATS5pe",
+        "GATS5se",
+        "MATS4d",
+        "MATS5are",
+        "MATS5c",
+        "MATS5dv",
+        "MATS5pe",
+        "MATS5se",
+        "MATS5v"
+      ],
+      "all_cluster_members": [
+        "AATS4Z",
+        "AATS4are",
+        "AATS4dv",
+        "AATS4m",
+        "AATS4pe",
+        "AATS4se",
+        "AATS4v",
+        "AATS5Z",
+        "AATS5are",
+        "AATS5dv",
+        "AATS5m",
+        "AATS5pe",
+        "AATS5se",
+        "AATS5v",
+        "AATSC4d",
+        "AATSC5are",
+        "AATSC5c",
+        "AATSC5dv",
+        "AATSC5pe",
+        "AATSC5se",
+        "AATSC5v",
+        "ATSC4d",
+        "ATSC5are",
+        "ATSC5c",
+        "ATSC5dv",
+        "ATSC5pe",
+        "ATSC5se",
+        "GATS4d",
+        "GATS5are",
+        "GATS5dv",
+        "GATS5pe",
+        "GATS5se",
+        "MATS4d",
+        "MATS5are",
+        "MATS5c",
+        "MATS5dv",
+        "MATS5pe",
+        "MATS5se",
+        "MATS5v"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATS4Z",
+          "AATS4are",
+          "AATS5Z",
+          "AATSC4d",
+          "AATSC5are",
+          "AATSC5v",
+          "ATSC5are"
+        ],
+        "pass3": [
+          "AATS4Z",
+          "AATS4are",
+          "AATS5Z",
+          "AATSC4d",
+          "AATSC5are",
+          "AATSC5v",
+          "ATSC4d",
+          "ATSC5are"
+        ]
+      },
+      "total_alternatives": 38
+    },
+    "NddssS": {
+      "cluster_size": 12,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "SaaS",
+        "SaaaC",
+        "SddssS",
+        "SlogP_VSA7",
+        "SssS",
+        "fr_N_O",
+        "fr_aryl_methyl",
+        "fr_furan",
+        "n7Ring",
+        "n7aRing_1",
+        "nI"
+      ],
+      "all_cluster_members": [
+        "NddssS",
+        "SaaS",
+        "SaaaC",
+        "SddssS",
+        "SlogP_VSA7",
+        "SssS",
+        "fr_N_O",
+        "fr_aryl_methyl",
+        "fr_furan",
+        "n7Ring",
+        "n7aRing_1",
+        "nI"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 11
+    },
+    "fr_Al_OH": {
+      "cluster_size": 15,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC2are",
+        "AATSC2pe",
+        "AATSC2se",
+        "ATSC2are",
+        "ATSC2pe",
+        "ATSC2se",
+        "GATS2are",
+        "GATS2pe",
+        "GATS2se",
+        "MATS2are",
+        "MATS2pe",
+        "MATS2se",
+        "PEOE_VSA9",
+        "fr_Al_OH_noTert"
+      ],
+      "all_cluster_members": [
+        "AATSC2are",
+        "AATSC2pe",
+        "AATSC2se",
+        "ATSC2are",
+        "ATSC2pe",
+        "ATSC2se",
+        "GATS2are",
+        "GATS2pe",
+        "GATS2se",
+        "MATS2are",
+        "MATS2pe",
+        "MATS2se",
+        "PEOE_VSA9",
+        "fr_Al_OH",
+        "fr_Al_OH_noTert"
+      ],
+      "removal_history": {
+        "pass2": [
+          "AATSC2are",
+          "ATSC2are"
+        ],
+        "pass3": [
+          "AATSC2are",
+          "ATSC2are",
+          "PEOE_VSA9"
+        ]
+      },
+      "total_alternatives": 14
+    },
+    "PEOE_VSA3": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "C3SP2"
+      ],
+      "all_cluster_members": [
+        "C3SP2",
+        "PEOE_VSA3"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "C3SP2"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "AATSC3v": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC3p",
+        "ATSC3p",
+        "ATSC3v",
+        "GATS3i",
+        "GATS3p",
+        "GATS3v",
+        "MATS3p",
+        "MATS3v"
+      ],
+      "all_cluster_members": [
+        "AATSC3p",
+        "AATSC3v",
+        "ATSC3p",
+        "ATSC3v",
+        "GATS3i",
+        "GATS3p",
+        "GATS3v",
+        "MATS3p",
+        "MATS3v"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC3p"
+        ],
+        "pass3": [
+          "ATSC3p",
+          "ATSC3v"
+        ]
+      },
+      "total_alternatives": 8
+    },
+    "ATSC7d": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC7i"
+      ],
+      "all_cluster_members": [
+        "ATSC7d",
+        "ATSC7i"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "ATSC7i"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "NumUnspecifiedAtomStereoCenters": {
+      "cluster_size": 11,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "AATSC3c",
+        "AATSC4c",
+        "ATSC3c",
+        "ATSC4c",
+        "MATS3c",
+        "MATS4c",
+        "NumAtomStereoCenters",
+        "VSA_EState6",
+        "Xc-4dv",
+        "Xc-6dv"
+      ],
+      "all_cluster_members": [
+        "AATSC3c",
+        "AATSC4c",
+        "ATSC3c",
+        "ATSC4c",
+        "MATS3c",
+        "MATS4c",
+        "NumAtomStereoCenters",
+        "NumUnspecifiedAtomStereoCenters",
+        "VSA_EState6",
+        "Xc-4dv",
+        "Xc-6dv"
+      ],
+      "removal_history": {
+        "pass2": [
+          "ATSC3c",
+          "ATSC4c",
+          "Xc-4dv"
+        ],
+        "pass3": [
+          "ATSC3c",
+          "ATSC4c",
+          "MATS3c",
+          "NumAtomStereoCenters",
+          "VSA_EState6",
+          "Xc-4dv"
+        ]
+      },
+      "total_alternatives": 10
+    },
+    "ATSC6i": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC6d",
+        "ATSC6p",
+        "ATSC6v"
+      ],
+      "all_cluster_members": [
+        "ATSC6d",
+        "ATSC6i",
+        "ATSC6p",
+        "ATSC6v"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "ATSC6d",
+          "ATSC6p",
+          "ATSC6v"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "fr_unbrch_alkane": {
+      "cluster_size": 1,
+      "is_representative": true,
+      "alternative_descriptors": [],
+      "all_cluster_members": [
+        "fr_unbrch_alkane"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": []
+      },
+      "total_alternatives": 0
+    },
+    "AATSC3d": {
+      "cluster_size": 4,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "ATSC3d",
+        "GATS3d",
+        "MATS3d"
+      ],
+      "all_cluster_members": [
+        "AATSC3d",
+        "ATSC3d",
+        "GATS3d",
+        "MATS3d"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "ATSC3d",
+          "GATS3d"
+        ]
+      },
+      "total_alternatives": 3
+    },
+    "SsssCH": {
+      "cluster_size": 2,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "NsssCH"
+      ],
+      "all_cluster_members": [
+        "NsssCH",
+        "SsssCH"
+      ],
+      "removal_history": {
+        "pass2": [],
+        "pass3": [
+          "NsssCH"
+        ]
+      },
+      "total_alternatives": 1
+    },
+    "NsCl": {
+      "cluster_size": 9,
+      "is_representative": true,
+      "alternative_descriptors": [
+        "GATS5c",
+        "RPCG",
+        "SsCl",
+        "VSA_EState10",
+        "fr_alkyl_halide",
+        "fr_halogen",
+        "nCl",
+        "nX"
+      ],
+      "all_cluster_members": [
+        "GATS5c",
+        "NsCl",
+        "RPCG",
+        "SsCl",
+        "VSA_EState10",
+        "fr_alkyl_halide",
+        "fr_halogen",
+        "nCl",
+        "nX"
+      ],
+      "removal_history": {
+        "pass2": [
+          "fr_halogen"
+        ],
+        "pass3": [
+          "GATS5c",
+          "RPCG",
+          "VSA_EState10",
+          "fr_halogen"
+        ]
+      },
+      "total_alternatives": 8
+    }
+  }
+}
