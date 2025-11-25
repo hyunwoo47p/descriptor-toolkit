@@ -451,8 +451,9 @@ class DescriptorPipeline:
                 
                 # Use GPU-based correlation VIF
                 vif_pass = VIFFilteringPassGPUWithClusters(
-                    self.config, 
-                    self.system_cfg.verbose, 
+                    self.filtering_cfg,
+                    self.io_cfg,
+                    self.system_cfg,
                     self.device
                 )
                 columns_p3, vif_info, indices_p3_sub = vif_pass.process_from_correlation(
@@ -625,7 +626,7 @@ class DescriptorPipeline:
             all_columns = dataset.schema.names
         
         # Exclude metadata columns
-        n_meta = self.io_cfg.n_metadata_cols
+        n_meta = self.io_cfg.n_metadata
         if n_meta > 0:
             self._log(f"  Total columns in file: {len(all_columns)}")
             self._log(f"  Metadata columns (excluded): {n_meta}")

@@ -26,7 +26,13 @@ import argparse
 from pathlib import Path
 
 from molecular_descriptor_toolkit import __version__
-from molecular_descriptor_toolkit.config import Config
+from molecular_descriptor_toolkit.config import (
+    Config,
+    IOConfig,
+    DeviceConfig,
+    FilteringConfig,
+    SystemConfig,
+)
 
 
 def create_parser():
@@ -133,7 +139,35 @@ For more information, visit: https://github.com/your-repo
     calc_parser.add_argument('--output', required=True, help='Output directory')
     calc_parser.add_argument('--schema', required=True, help='Schema JSON file')
     calc_parser.add_argument('--timeout', type=int, default=30, help='Per-molecule timeout (seconds)')
-    
+
+    # ===== Process-all command (XML/SMILES → Descriptors → Filtering) =====
+    process_all_parser = subparsers.add_parser(
+        'process-all',
+        help='Run full pipeline: [XML →] SMILES → Descriptor calculation → Filtering',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    process_all_parser.add_argument('--input', required=True,
+        help='Input file: XML (.xml/.xml.gz), CSV, or Parquet with SMILES')
+    process_all_parser.add_argument('--output-dir', required=True, help='Output directory for all results')
+    process_all_parser.add_argument('--smiles-col', default='SMILES::Absolute', help='SMILES column name')
+    process_all_parser.add_argument('--id-col', default='CID', help='ID column name')
+    process_all_parser.add_argument('--schema', help='Schema JSON (auto-generated if not provided)')
+    process_all_parser.add_argument('--mol-timeout', type=int, default=30, help='Per-molecule timeout (seconds)')
+    process_all_parser.add_argument('--cpu', action='store_true', help='Force CPU mode')
+    process_all_parser.add_argument('--gpu-id', type=int, default=0, help='GPU device ID')
+    process_all_parser.add_argument('--verbose', action='store_true', help='Verbose output')
+    process_all_parser.add_argument('--no-checkpoint', action='store_true', help='Disable checkpoint/resume')
+    process_all_parser.add_argument('--random-seed', type=int, default=42, help='Random seed')
+    # XML filtering options
+    process_all_parser.add_argument('--filter-property', help='XML: Property for filtering (e.g., "H-Bond Donor Count")')
+    process_all_parser.add_argument('--filter-min', type=float, help='XML: Minimum value for filter')
+    process_all_parser.add_argument('--filter-max', type=float, help='XML: Maximum value for filter')
+    # Filtering parameters
+    process_all_parser.add_argument('--variance-threshold', type=float, default=0.002)
+    process_all_parser.add_argument('--spearman-threshold', type=float, default=0.95)
+    process_all_parser.add_argument('--vif-threshold', type=float, default=10.0)
+    process_all_parser.add_argument('--nonlinear-threshold', type=float, default=0.3)
+
     return parser
 
 
@@ -198,6 +232,8 @@ def main():
         return run_filter(args)
     elif args.command == 'preprocess':
         return run_preprocess(args)
+    elif args.command == 'process-all':
+        return run_process_all(args)
     else:
         parser.print_help()
         return 1
@@ -206,23 +242,34 @@ def main():
 def run_full_pipeline(args):
     """Run full pipeline (all passes)"""
     from molecular_descriptor_toolkit.filtering import DescriptorPipeline
-    
-    # Create config
+
+    # Create config with section-based structure
     config = Config(
-        parquet_glob=args.parquet_glob,
-        output_dir=args.output_dir,
-        prefer_gpu=not args.cpu,
-        gpu_id=args.gpu_id,
-        checkpoint=not args.no_checkpoint,
-        verbose=args.verbose,
-        random_seed=args.random_seed,
-        sample_per_file=getattr(args, 'sample_per_file', None),
-        variance_threshold=getattr(args, 'variance_threshold', 0.002),
-        spearman_threshold=getattr(args, 'spearman_threshold', 0.95),
-        vif_threshold=getattr(args, 'vif_threshold', 10.0),
-        nonlinear_threshold=getattr(args, 'nonlinear_threshold', 0.3),
+        io=IOConfig(
+            parquet_glob=args.parquet_glob,
+            output_dir=args.output_dir,
+        ),
+        device=DeviceConfig(
+            prefer_gpu=not args.cpu,
+            gpu_id=args.gpu_id,
+        ),
+        filtering=FilteringConfig(
+            sample_per_file=getattr(args, 'sample_per_file', None),
+            variance_threshold=getattr(args, 'variance_threshold', 0.002),
+            spearman_threshold=getattr(args, 'spearman_threshold', 0.95),
+            vif_threshold=getattr(args, 'vif_threshold', 10.0),
+            nonlinear_threshold=getattr(args, 'nonlinear_threshold', 0.3),
+        ),
+        system=SystemConfig(
+            checkpoint=not args.no_checkpoint,
+            verbose=args.verbose,
+            random_seed=args.random_seed,
+        ),
     )
-    
+
+    # Validate and finalize (auto-detect device)
+    config.validate_and_finalize()
+
     print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
     print(f"📊 Mode: {'GPU' if config.using_gpu else 'CPU'}")
     print(f"📂 Input: {args.parquet_glob}")
@@ -244,39 +291,45 @@ def run_full_pipeline(args):
 def run_filter(args):
     """Run filtering passes"""
     from molecular_descriptor_toolkit.filtering import DescriptorPipeline
-    
+
     if not args.pass_name:
         print("Error: Please specify a pass to run (pass0, pass1, pass234, all)")
         return 1
-    
-    # Create config
+
+    # Create config with section-based structure
     config = Config(
-        parquet_glob=args.parquet_glob,
-        output_dir=args.output_dir,
-        prefer_gpu=not args.cpu,
-        gpu_id=args.gpu_id,
-        checkpoint=not args.no_checkpoint,
-        verbose=args.verbose,
-        random_seed=args.random_seed,
+        io=IOConfig(
+            parquet_glob=args.parquet_glob,
+            output_dir=args.output_dir,
+        ),
+        device=DeviceConfig(
+            prefer_gpu=not args.cpu,
+            gpu_id=args.gpu_id,
+        ),
+        filtering=FilteringConfig(
+            sample_per_file=getattr(args, 'sample_per_file', None),
+            variance_threshold=getattr(args, 'variance_threshold', 0.002),
+            max_missing_ratio=getattr(args, 'max_missing_ratio', 0.5),
+            min_effective_n=getattr(args, 'min_effective_n', 100),
+            spearman_threshold=getattr(args, 'spearman_threshold', 0.95),
+            vif_threshold=getattr(args, 'vif_threshold', 10.0),
+            nonlinear_threshold=getattr(args, 'nonlinear_threshold', 0.3),
+        ),
+        system=SystemConfig(
+            checkpoint=not args.no_checkpoint,
+            verbose=args.verbose,
+            random_seed=args.random_seed,
+        ),
     )
-    
-    # Set pass-specific parameters
-    if hasattr(args, 'sample_per_file'):
-        config.sample_per_file = args.sample_per_file
-    if hasattr(args, 'variance_threshold'):
-        config.variance_threshold = args.variance_threshold
-    if hasattr(args, 'spearman_threshold'):
-        config.spearman_threshold = args.spearman_threshold
-    if hasattr(args, 'vif_threshold'):
-        config.vif_threshold = args.vif_threshold
-    if hasattr(args, 'nonlinear_threshold'):
-        config.nonlinear_threshold = args.nonlinear_threshold
-    
+
+    # Validate and finalize (auto-detect device)
+    config.validate_and_finalize()
+
     print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
     print(f"📊 Mode: {'GPU' if config.using_gpu else 'CPU'}")
     print(f"🔧 Pass: {args.pass_name}")
     print("="*70)
-    
+
     # Run specific pass
     pipeline = DescriptorPipeline(config)
     
@@ -355,6 +408,176 @@ def run_preprocess(args):
         return subprocess.call(cmd)
     
     return 1
+
+
+def run_process_all(args):
+    """
+    Run full pipeline: [XML →] SMILES → Descriptor calculation → Filtering
+
+    This command combines:
+    0. XML parsing (if input is XML)
+    1. Schema generation (if not provided)
+    2. Descriptor calculation (RDKit + Mordred)
+    3. Filtering pipeline (Pass 1-4)
+
+    Input format is auto-detected by file extension:
+    - .xml / .xml.gz → PubChem XML (extracts SMILES, InChI, etc.)
+    - .csv → CSV with SMILES column
+    - .parquet → Parquet with SMILES column
+    """
+    import subprocess
+    from pathlib import Path
+    from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    input_path = Path(args.input)
+
+    # Detect input format
+    input_lower = str(input_path).lower()
+    is_xml = input_lower.endswith('.xml') or input_lower.endswith('.xml.gz')
+
+    print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
+    print("=" * 70)
+    if is_xml:
+        print("📌 Running full process: XML → SMILES → Descriptors → Filtering")
+    else:
+        print("📌 Running full process: SMILES → Descriptors → Filtering")
+    print("=" * 70)
+
+    # Determine step count
+    total_steps = 4 if is_xml else 3
+    current_step = 0
+
+    # Step 0 (XML only): Parse XML to extract SMILES/InChI
+    if is_xml:
+        current_step += 1
+        smiles_path = output_dir / "extracted_molecules.parquet"
+        print(f"\n📄 Step {current_step}/{total_steps}: Parsing PubChem XML...")
+        print(f"   Input: {input_path}")
+
+        cmd = [
+            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.xml_parser',
+            '--input', str(input_path),
+            '--output', str(smiles_path)
+        ]
+        # Add filtering options if provided
+        if getattr(args, 'filter_property', None):
+            cmd.extend(['--filter-property', args.filter_property])
+        if getattr(args, 'filter_min', None) is not None:
+            cmd.extend(['--filter-min', str(args.filter_min)])
+        if getattr(args, 'filter_max', None) is not None:
+            cmd.extend(['--filter-max', str(args.filter_max)])
+
+        result = subprocess.call(cmd)
+        if result != 0:
+            print("❌ XML parsing failed")
+            return 1
+        print(f"   ✓ Molecules extracted to: {smiles_path}")
+
+        # Update input path for subsequent steps
+        descriptor_input = smiles_path
+        # Use PubChem's SMILES column name
+        smiles_col = 'SMILES::Absolute'
+    else:
+        descriptor_input = input_path
+        smiles_col = args.smiles_col
+
+    # Step 1: Schema generation (if not provided)
+    current_step += 1
+    if args.schema:
+        schema_path = Path(args.schema)
+        print(f"\n📋 Step {current_step}/{total_steps}: Using provided schema: {schema_path}")
+    else:
+        schema_path = output_dir / "generated_schema.json"
+        print(f"\n📋 Step {current_step}/{total_steps}: Generating descriptor schema...")
+
+        cmd = [
+            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.schema_generator',
+            '--input', str(descriptor_input.parent if descriptor_input.is_file() else descriptor_input),
+            '--output', str(schema_path),
+            '--quick'
+        ]
+        result = subprocess.call(cmd)
+        if result != 0:
+            print("❌ Schema generation failed")
+            return 1
+        print(f"   ✓ Schema saved to: {schema_path}")
+
+    # Step 2: Descriptor calculation
+    current_step += 1
+    descriptors_path = output_dir / "descriptors.parquet"
+    print(f"\n⚗️  Step {current_step}/{total_steps}: Calculating molecular descriptors...")
+
+    cmd = [
+        'python', '-m', 'molecular_descriptor_toolkit.preprocessing.descriptor_calculator',
+        '--input', str(descriptor_input),
+        '--output', str(descriptors_path),
+        '--schema', str(schema_path),
+        '--smiles-col', smiles_col,
+        '--id-col', args.id_col,
+        '--format', 'parquet',
+        '--n-jobs', '1'
+    ]
+    if args.mol_timeout:
+        cmd.extend(['--mol-timeout', str(args.mol_timeout)])
+
+    result = subprocess.call(cmd)
+    if result != 0:
+        print("❌ Descriptor calculation failed")
+        return 1
+    print(f"   ✓ Descriptors saved to: {descriptors_path}")
+
+    # Step 3 (or 4): Filtering pipeline
+    current_step += 1
+    filtering_output = output_dir / "filtering"
+    print(f"\n🔬 Step {current_step}/{total_steps}: Running filtering pipeline...")
+
+    config = Config(
+        io=IOConfig(
+            parquet_glob=str(descriptors_path),
+            output_dir=str(filtering_output),
+        ),
+        device=DeviceConfig(
+            prefer_gpu=not args.cpu,
+            gpu_id=args.gpu_id,
+        ),
+        filtering=FilteringConfig(
+            variance_threshold=args.variance_threshold,
+            spearman_threshold=args.spearman_threshold,
+            vif_threshold=args.vif_threshold,
+            nonlinear_threshold=args.nonlinear_threshold,
+        ),
+        system=SystemConfig(
+            checkpoint=not args.no_checkpoint,
+            verbose=args.verbose,
+            random_seed=args.random_seed,
+        ),
+    )
+
+    # Validate and finalize (auto-detect device)
+    config.validate_and_finalize()
+
+    print(f"   Mode: {'GPU' if config.using_gpu else 'CPU'}")
+
+    pipeline = DescriptorPipeline(config)
+    result = pipeline.run()
+
+    # Summary
+    print("\n" + "=" * 70)
+    print("✅ Full Pipeline Completed!")
+    print("=" * 70)
+    print(f"📂 Input: {args.input}")
+    if is_xml:
+        print(f"📄 Extracted molecules: {smiles_path}")
+    print(f"📁 Output directory: {output_dir}")
+    print(f"📋 Schema: {schema_path}")
+    print(f"📊 Descriptors: {descriptors_path}")
+    print(f"🔬 Filtering results: {filtering_output}")
+    print(f"📈 Final descriptors: {len(result['final_columns'])}")
+    print("=" * 70)
+
+    return 0
 
 
 if __name__ == '__main__':

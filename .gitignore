@@ -21,3 +21,8 @@ logs/
 
 # OS
 .DS_Store
+
+# Test outputs
+test_*/
+test_output/
+

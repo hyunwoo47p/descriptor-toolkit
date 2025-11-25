@@ -278,7 +278,7 @@ class StatisticsAndVarianceFilter:
         self._log("\n        Computing CDF lookup tables for Spearman correlation...")
         
         # Use config resolution (default: 1000)
-        n_points = getattr(self.config, 'rdc_cdf_resolution', 1000)
+        n_points = getattr(self.filtering_cfg, 'rdc_cdf_resolution', 1000)
         self._log(f"        Quantile points per descriptor: {n_points}")
         self._log(f"        Estimated time: {p * n_points / 100000:.1f} minutes")
         
