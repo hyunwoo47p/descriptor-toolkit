@@ -1,10 +1,16 @@
 """
-Main Pipeline - Integrated descriptor filtering pipeline
-WITH CHECKPOINT RESUME SUPPORT
+ChemDescriptorML (CDML) - Track 1: Descriptor Filtering Pipeline
 
-메모리 누수 수정사항:
+5-Stage filtering pipeline with checkpoint resume support:
+- Pass 0: Sampling (for large datasets)
+- Pass 1: Variance Filtering (remove low-variance descriptors)
+- Pass 2: Spearman Correlation Clustering
+- Pass 3: VIF (Variance Inflation Factor) Filtering
+- Pass 4: Nonlinear Analysis (HSIC + RDC)
+
+Memory optimization:
 - Pass 2에서 data=None 전달 (stats 사용)
-- .copy() 사용하여 NumPy view 참조 제거  
+- .copy() 사용하여 NumPy view 참조 제거
 - 각 Pass 후 명시적 메모리 정리
 - GPU 메모리 명시적 해제
 """
@@ -1115,7 +1121,7 @@ class DescriptorPipeline:
         pass1_stats_file = self.output_dir / "pass1_stats.npz"
         
         if not (pass1_columns_file.exists() and pass1_stats_file.exists()):
-            raise RuntimeError("Pass 1 results not found. Please run Pass 1 first with: mdt filter pass1")
+            raise RuntimeError("Pass 1 results not found. Please run Pass 1 first with: cdml filter pass1")
         
         self._log(f"\nLoading Pass 1 results...")
         

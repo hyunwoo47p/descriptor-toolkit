@@ -1,14 +1,14 @@
 """
-GPU-accelerated similarity computation using PyTorch
-MEMORY-OPTIMIZED VERSION with chunk-based accumulation
+ChemDescriptorML (CDML) - Track 1, Pass 2: Spearman Correlation Clustering
 
-Key improvements:
+GPU-accelerated Spearman correlation computation using PyTorch.
+Memory-optimized with chunk-based accumulation.
+
+Key features:
 1. 2-pass algorithm: 1st pass for statistics, 2nd pass for matrix accumulation
 2. In-place operations to minimize memory allocation
 3. Row-chunk processing instead of loading all data
 4. Float32 option for 2x memory reduction
-
-Author: Memory Optimization v2.0
 """
 
 import time

@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 """
-Master Schema Generator for Molecular Descriptors
+ChemDescriptorML (CDML) - Schema Generator
 
-This script generates a master schema by collecting ALL unique descriptor columns
-from a sample of input files. The schema can then be used to ensure consistent
-columns across all descriptor calculation runs.
-
-CRITICAL: Column normalization logic is SHARED with make_descriptors_fixed.py
-to ensure 1:1 schema-to-output matching.
+Generates a master schema by collecting ALL unique descriptor columns
+from a sample of input files. The schema ensures consistent columns
+across all descriptor calculation runs.
 
 Usage:
-    # Generate from all files in directory
-    python generate_master_schema.py -i /path/to/files/ -o master_schema.json
+    cdml preprocess generate-schema -i /path/to/files/ -o master_schema.json
     
     # Generate from specific number of sample files
     python generate_master_schema.py -i /path/to/files/ -o master_schema.json --sample 10

@@ -1,12 +1,10 @@
 """
-Pass1: Statistics + Low Variance Filtering (GPU Accelerated)
+ChemDescriptorML (CDML) - Track 1, Pass 1: Statistics + Variance Filtering
 
-Combines:
+GPU-accelerated statistics computation and low-variance filtering:
 1. Global statistics computation (mean, std, quantiles)
 2. Low variance filtering (excluding metadata columns)
 3. Binary column detection
-
-This pass integrates what was previously separate variance filtering step.
 """
 
 import time

@@ -1,6 +1,11 @@
 """
-Unified Configuration for Molecular Descriptor Toolkit
-Hierarchical SSOT design with section-based organization
+Unified Configuration for ChemDescriptorML (CDML)
+
+Hierarchical SSOT design with section-based organization:
+- DeviceConfig: GPU/CPU settings
+- IOConfig: Input/output paths
+- FilteringConfig: Filtering parameters (Track 1)
+- SystemConfig: Checkpoint, verbose settings
 """
 
 from dataclasses import dataclass, field
@@ -454,29 +459,29 @@ class SystemConfig:
 @dataclass
 class Config:
     """
-    Unified configuration for Molecular Descriptor Toolkit
-    
+    Unified configuration for ChemDescriptorML (CDML)
+
     Hierarchical SSOT (Single Source of Truth) design with section-based organization.
     Each section groups related settings, allowing modules to depend only on what they need.
-    
+
     Sections:
         device: GPU/CPU settings
         io: Input/output and checkpointing
         preprocessing: Molecular standardization
         descriptor: Descriptor calculation
-        filtering: Filtering pipeline (Pass 0-4)
+        filtering: Filtering pipeline (Track 1: Pass 0-4)
         system: System-wide settings
-    
+
     Usage:
-        # Full pipeline
+        # Track 1: Filtering pipeline
         config = Config(
             io=IOConfig(parquet_glob="data/*.parquet", output_dir="results"),
             filtering=FilteringConfig(variance_threshold=0.001),
         )
-        
+
         # From YAML
         config = load_config("settings.yaml")
-        
+
         # With overrides
         config = load_config("settings.yaml", overrides={
             "filtering.vif_threshold": 8.0,

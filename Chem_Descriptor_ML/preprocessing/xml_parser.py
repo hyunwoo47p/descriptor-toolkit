@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Enhanced PubChem XML to CSV Converter with Error Recovery and Filtering
-========================================================================
+ChemDescriptorML (CDML) - PubChem XML Parser
 
-Fast and efficient converter for PubChem PC-Compounds XML files to CSV format
-with XML parsing error recovery, progress tracking, memory optimization, and
-property-based filtering (e.g., H-bond donor filtering).
-
-Features:
-- XML PARSING ERROR RECOVERY: Continues processing even with malformed XML
-- PROPERTY-BASED FILTERING: Filter compounds by any numeric property (H-bond donors, MW, etc.)
+PubChem PC-Compounds XML to Parquet/CSV converter with:
+- XML parsing error recovery (continues with malformed XML)
+- Property-based filtering (H-bond donors, MW, etc.)
 - Progress bar with ETA and speed information
 - Memory-efficient streaming processing
 - Support for both .xml and .xml.gz files

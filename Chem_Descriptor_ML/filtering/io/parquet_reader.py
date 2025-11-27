@@ -1,5 +1,7 @@
 """
-Parquet 파일 스트리밍 I/O
+ChemDescriptorML (CDML) - Parquet Streaming I/O
+
+Memory-efficient Parquet file reading and writing utilities.
 """
 
 import numpy as np

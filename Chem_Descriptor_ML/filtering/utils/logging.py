@@ -1,4 +1,4 @@
-"""Logging utilities"""
+"""ChemDescriptorML (CDML) - Logging Utilities"""
 import sys
 from datetime import datetime
 from typing import Optional

@@ -1,4 +1,4 @@
-"""VIF Filtering with Cluster Information v2.0
+"""ChemDescriptorML (CDML) - Track 1, Pass 3: VIF Filtering with Cluster Information
 
 Survivor Selection Method:
 --------------------------

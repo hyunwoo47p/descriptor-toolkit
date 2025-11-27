@@ -1,13 +1,18 @@
 """
-Molecular Descriptor Toolkit (MDT)
-===================================
+ChemDescriptorML (CDML)
+========================
 
-A comprehensive toolkit for molecular descriptor calculation and filtering
-with GPU acceleration.
+GPU-accelerated molecular descriptor calculation, filtering, and ML training toolkit.
 
-Workflow:
-1. Preprocessing: XML → Parquet, Schema Generation, Descriptor Calculation
-2. Filtering: Multi-pass descriptor filtering pipeline (Pass 0-4)
+Tracks:
+1. Track 1 - Descriptor Extraction & Filtering:
+   - Preprocessing: XML → Parquet, Schema Generation, Descriptor Calculation
+   - Filtering: 5-Stage Pipeline (Variance → Spearman → VIF → HSIC/RDC → Final)
+
+2. Track 2 - ML Model Training:
+   - 8 Regression Models: RandomForest, XGBoost, LightGBM, Ridge, Lasso, etc.
+   - K-Fold Cross-Validation + Hold-Out Evaluation
+   - Cluster-aware Descriptor Selection
 
 Features:
 - GPU-accelerated by default (automatic CPU fallback)

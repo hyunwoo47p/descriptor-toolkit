@@ -1,4 +1,4 @@
-"""Configuration module for Molecular Descriptor Toolkit"""
+"""Configuration module for ChemDescriptorML (CDML)"""
 
 from Chem_Descriptor_ML.config.settings import (
     Config,

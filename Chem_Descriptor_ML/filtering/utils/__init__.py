@@ -1,4 +1,4 @@
-"""Filtering utilities module"""
+"""ChemDescriptorML (CDML) - Filtering Utilities Module"""
 
 # Direct import for logging (no dependencies)
 from Chem_Descriptor_ML.filtering.utils.logging import log

@@ -1,7 +1,7 @@
 """
-Pass0: Data Sampling
+ChemDescriptorML (CDML) - Track 1, Pass 0: Data Sampling
 
-Creates a unified sampled parquet file if sampling is enabled.
+Creates a unified sampled parquet file for large datasets.
 """
 
 import time

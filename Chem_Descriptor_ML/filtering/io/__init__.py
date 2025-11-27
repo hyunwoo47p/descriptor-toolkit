@@ -1,4 +1,4 @@
-"""Filtering IO module - Lazy imports"""
+"""ChemDescriptorML (CDML) - Filtering IO Module (Parquet I/O)"""
 
 __all__ = [
     "iter_batches",

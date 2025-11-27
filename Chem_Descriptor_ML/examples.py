@@ -1,10 +1,16 @@
 #!/usr/bin/env python3
 """
-Example usage of Molecular Descriptor Toolkit
-==============================================
+Example usage of ChemDescriptorML (CDML)
+=========================================
 
-This script demonstrates the basic usage of MDT for both
+This script demonstrates the basic usage of CDML for both
 API and CLI approaches.
+
+Track 1 Examples: Descriptor Filtering Pipeline
+- GPU-accelerated filtering
+- Step-by-step execution
+- CPU mode
+- Custom parameters
 """
 
 from Chem_Descriptor_ML.config import (
@@ -187,7 +193,7 @@ def example_custom_parameters():
 if __name__ == "__main__":
     import sys
 
-    print("🧬 Molecular Descriptor Toolkit - Examples")
+    print("🧬 ChemDescriptorML - Track 1 Examples")
     print("="*70)
 
     # Check if data exists
@@ -195,8 +201,8 @@ if __name__ == "__main__":
     if not glob.glob("data/*.parquet"):
         print("\n⚠️  Warning: No parquet files found in 'data/' directory")
         print("Please prepare your data first using:")
-        print("  mdt preprocess xml-to-parquet ...")
-        print("  mdt preprocess calculate-descriptors ...")
+        print("  cdml preprocess xml-to-parquet ...")
+        print("  cdml preprocess calculate-descriptors ...")
         sys.exit(1)
 
     # Run examples

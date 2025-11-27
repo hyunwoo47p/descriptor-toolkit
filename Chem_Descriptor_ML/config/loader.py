@@ -1,6 +1,7 @@
 """
-Configuration Loader
-Supports YAML, JSON, environment variables, and CLI overrides
+Configuration Loader for ChemDescriptorML (CDML)
+
+Supports YAML, JSON, environment variables, and CLI overrides.
 """
 
 import os
@@ -13,7 +14,7 @@ from .settings import Config, _as_flat_dict
 def load_config(
     path: Optional[str] = None,
     overrides: Optional[Dict[str, Any]] = None,
-    env_prefix: str = "MDTK_",
+    env_prefix: str = "CDML_",
 ) -> Config:
     """
     Load configuration with priority: defaults < file < env < overrides
@@ -21,13 +22,13 @@ def load_config(
     Priority order (later overrides earlier):
     1. Default values from dataclass definitions
     2. Configuration file (YAML or JSON)
-    3. Environment variables (MDTK_* prefix by default)
+    3. Environment variables (CDML_* prefix by default)
     4. Explicit overrides dictionary
-    
+
     Args:
         path: Path to YAML or JSON config file (optional)
         overrides: Dictionary of explicit overrides (dotpath format)
-        env_prefix: Prefix for environment variables (default: "MDTK_")
+        env_prefix: Prefix for environment variables (default: "CDML_")
     
     Returns:
         Loaded and validated Config instance
@@ -43,8 +44,8 @@ def load_config(
         ... )
         
         # Environment variables
-        >>> # MDTK_DEVICE_GPU_ID=1
-        >>> # MDTK_FILTERING_VIF_THRESHOLD=8.0
+        >>> # CDML_DEVICE_GPU_ID=1
+        >>> # CDML_FILTERING_VIF_THRESHOLD=8.0
         >>> cfg = load_config()
         
         # Overrides only (no file)
@@ -122,23 +123,23 @@ def _load_file(path: str) -> Dict[str, Any]:
     )
 
 
-def _read_env_overrides(prefix: str = "MDTK_") -> Dict[str, Any]:
+def _read_env_overrides(prefix: str = "CDML_") -> Dict[str, Any]:
     """
     Read configuration overrides from environment variables
-    
+
     Environment variable format:
         {PREFIX}{SECTION}_{KEY}=value
-    
+
     Type conversion (automatic via JSON parsing):
         - Booleans: "true"/"false" (case-sensitive) → bool
         - Numbers: "42" → int, "3.14" → float
         - Strings: Used as-is (if not valid JSON)
-    
+
     Examples:
-        MDTK_DEVICE_GPU_ID=1 → device.gpu_id = 1
-        MDTK_DEVICE_PREFER_GPU=true → device.prefer_gpu = True
-        MDTK_FILTERING_VIF_THRESHOLD=8.0 → filtering.vif_threshold = 8.0
-        MDTK_IO_OUTPUT_DIR=results → io.output_dir = "results"
+        CDML_DEVICE_GPU_ID=1 → device.gpu_id = 1
+        CDML_DEVICE_PREFER_GPU=true → device.prefer_gpu = True
+        CDML_FILTERING_VIF_THRESHOLD=8.0 → filtering.vif_threshold = 8.0
+        CDML_IO_OUTPUT_DIR=results → io.output_dir = "results"
     
     Args:
         prefix: Environment variable prefix
@@ -153,7 +154,7 @@ def _read_env_overrides(prefix: str = "MDTK_") -> Dict[str, Any]:
             continue
         
         # Remove prefix and convert to dotpath
-        # MDTK_DEVICE_GPU_ID → device.gpu_id
+        # CDML_DEVICE_GPU_ID → device.gpu_id
         dotpath = key[len(prefix):].lower().replace("_", ".", 1).replace("_", "")
         
         # Try to parse as JSON (handles numbers, booleans, etc.)

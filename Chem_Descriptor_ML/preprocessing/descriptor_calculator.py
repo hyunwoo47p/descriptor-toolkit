@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Process-based per-molecule timeout version + RESUME FROM PARTS:
-- Keeps original pipeline (parse → std → descriptors → schema enforce → streaming write)
-- Per-molecule timeout using a supervised worker process
-- RESUME: If parquet part files already exist (part-*.parquet), skip those chunks and
-          continue with the next missing chunk index. Consolidation keeps parts by default.
+ChemDescriptorML (CDML) - Descriptor Calculator
 
-Base: user-provided make_descriptors_fixed_complete.py (keeps schema/streaming)  # cite
+RDKit + Mordred descriptor calculation with:
+- Per-molecule timeout using a supervised worker process
+- Resume capability from part files (part-*.parquet)
+- Schema enforcement for consistent output columns
+- Memory-efficient streaming write
 """
 from __future__ import annotations
 

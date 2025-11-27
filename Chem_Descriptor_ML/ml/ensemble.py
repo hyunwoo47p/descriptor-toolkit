@@ -1,12 +1,20 @@
 """
+ChemDescriptorML (CDML) - Track 2: ML Model Training
+
 Optimal ML Ensemble for Molecular Property Prediction
+
+Supported Models:
+- RandomForest, ExtraTrees (Tree-based)
+- XGBoost, LightGBM (Boosting)
+- Ridge, Lasso, ElasticNet (Linear)
+- GPR (Gaussian Process Regressor)
 
 Features:
 - K-Fold Cross-Validation (reliability)
 - Hold-Out Test Set (real-world performance)
 - Strong regularization (overfitting prevention)
 - Extreme value evaluation (important regions)
-- Cluster-aware descriptor selection
+- Cluster-aware descriptor selection (sequential, representative, random_alternative, mixed)
 """
 
 import json

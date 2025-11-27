@@ -1,12 +1,12 @@
 """
-GPU-accelerated VIF filtering (Memory-Optimized)
+ChemDescriptorML (CDML) - Track 1, Pass 4: Nonlinear Analysis (HSIC + RDC)
 
-Key insight: VIF can be computed from correlation matrix alone,
-no need to load full data into GPU memory.
+GPU-accelerated nonlinear correlation detection.
+Identifies descriptors with strong nonlinear relationships.
 
-VIF_j = 1 / (1 - R²_j) where R²_j is from regressing X_j on other X_(-j)
-
-Author: Memory Optimization v2.0
+Methods:
+- HSIC (Hilbert-Schmidt Independence Criterion)
+- RDC (Randomized Dependence Coefficient)
 """
 
 import numpy as np

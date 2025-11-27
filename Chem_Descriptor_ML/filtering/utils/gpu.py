@@ -1,4 +1,4 @@
-"""GPU utilities"""
+"""ChemDescriptorML (CDML) - GPU Utilities"""
 import torch
 from typing import Tuple
 

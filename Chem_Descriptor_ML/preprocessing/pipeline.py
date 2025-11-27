@@ -1,5 +1,10 @@
 """
-Preprocessing Wrapper - Config-based interface to preprocessing modules
+ChemDescriptorML (CDML) - Preprocessing Pipeline
+
+Config-based interface to preprocessing modules:
+- XML Parser: PubChem XML → Parquet conversion
+- Schema Generator: Auto-detect descriptor schema
+- Descriptor Calculator: RDKit + Mordred descriptor calculation
 """
 
 from pathlib import Path

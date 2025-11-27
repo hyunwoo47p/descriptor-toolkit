@@ -1,4 +1,15 @@
-"""Filtering passes module - Lazy imports to avoid dependency issues"""
+"""
+ChemDescriptorML (CDML) - Filtering Passes Module
+
+Track 1: 5-Stage Descriptor Filtering
+- Pass 0: SamplingPass - Large dataset sampling
+- Pass 1: StatisticsAndVarianceFilter - Variance filtering
+- Pass 2: SpearmanComputerGPU - Correlation clustering
+- Pass 3: VIFFilteringPassGPUWithClusters - VIF filtering
+- Pass 4: NonlinearDetectionPassGPU - HSIC/RDC analysis
+
+Lazy imports to avoid dependency issues.
+"""
 
 __all__ = [
     "SamplingPass",
