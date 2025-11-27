@@ -19,6 +19,6 @@ Features:
 __version__ = "1.0.0"
 __author__ = "KAERI_UES"
 
-from molecular_descriptor_toolkit.config.settings import Config
+from Chem_Descriptor_ML.config.settings import Config
 
 __all__ = ["Config"]

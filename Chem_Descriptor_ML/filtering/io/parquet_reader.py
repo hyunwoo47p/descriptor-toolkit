@@ -8,7 +8,7 @@ import pyarrow.dataset as ds
 import pyarrow.parquet as pq
 from typing import List, Iterator, Tuple, Dict, Optional
 from pathlib import Path
-from molecular_descriptor_toolkit.filtering.utils.logging import log
+from Chem_Descriptor_ML.filtering.utils.logging import log
 
 
 # Parquet writer 설정

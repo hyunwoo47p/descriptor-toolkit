@@ -1,32 +1,32 @@
 #!/usr/bin/env python3
 """
-Molecular Descriptor Toolkit (MDT) - Command Line Interface
+ChemDescriptorML (CDML) - Command Line Interface
 ============================================================
 
 Unified CLI for molecular descriptor processing with GPU acceleration
 
 Usage:
     # Full workflow
-    mdt run --input data/ --output results/
+    cdml run --input data/ --output results/
     
     # Preprocessing
-    mdt preprocess xml-to-parquet --input data.xml --output data.parquet
-    mdt preprocess generate-schema --input data/ --output schema.json
-    mdt preprocess calculate-descriptors --input data.parquet --schema schema.json
+    cdml preprocess xml-to-parquet --input data.xml --output data.parquet
+    cdml preprocess generate-schema --input data/ --output schema.json
+    cdml preprocess calculate-descriptors --input data.parquet --schema schema.json
     
     # Filtering (step-by-step)
-    mdt filter pass0 --input data.parquet --output results/
-    mdt filter pass1 --input data.parquet --output results/
-    mdt filter pass234 --input data.parquet --output results/
-    mdt filter all --input data.parquet --output results/  # Pass 0-4
+    cdml filter pass0 --input data.parquet --output results/
+    cdml filter pass1 --input data.parquet --output results/
+    cdml filter pass234 --input data.parquet --output results/
+    cdml filter all --input data.parquet --output results/  # Pass 0-4
 """
 
 import sys
 import argparse
 from pathlib import Path
 
-from molecular_descriptor_toolkit import __version__
-from molecular_descriptor_toolkit.config import (
+from Chem_Descriptor_ML import __version__
+from Chem_Descriptor_ML.config import (
     Config,
     IOConfig,
     DeviceConfig,
@@ -38,22 +38,22 @@ from molecular_descriptor_toolkit.config import (
 def create_parser():
     """Create main argument parser with GPU as default"""
     parser = argparse.ArgumentParser(
-        prog='mdt',
-        description='Molecular Descriptor Toolkit - GPU-Accelerated Pipeline',
+        prog='cdml',
+        description='ChemDescriptorML - GPU-Accelerated Pipeline',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   # Full workflow (GPU accelerated by default)
-  mdt run --parquet-glob "data/*.parquet" --output-dir results/
+  cdml run --parquet-glob "data/*.parquet" --output-dir results/
   
   # Force CPU mode
-  mdt run --parquet-glob "data/*.parquet" --output-dir results/ --cpu
+  cdml run --parquet-glob "data/*.parquet" --output-dir results/ --cpu
   
   # Filtering steps
-  mdt filter pass0 --parquet-glob "data/*.parquet" --output-dir results/
-  mdt filter pass1 --parquet-glob "data/*.parquet" --output-dir results/
-  mdt filter pass234 --parquet-glob "data/*.parquet" --output-dir results/
-  mdt filter all --parquet-glob "data/*.parquet" --output-dir results/
+  cdml filter pass0 --parquet-glob "data/*.parquet" --output-dir results/
+  cdml filter pass1 --parquet-glob "data/*.parquet" --output-dir results/
+  cdml filter pass234 --parquet-glob "data/*.parquet" --output-dir results/
+  cdml filter all --parquet-glob "data/*.parquet" --output-dir results/
 
 For more information, visit: https://github.com/your-repo
         """
@@ -275,7 +275,7 @@ def main():
 
 def run_full_pipeline(args):
     """Run full pipeline (all passes)"""
-    from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+    from Chem_Descriptor_ML.filtering import DescriptorPipeline
 
     # Create config with section-based structure
     config = Config(
@@ -306,7 +306,7 @@ def run_full_pipeline(args):
     # Validate and finalize (auto-detect device)
     config.validate_and_finalize()
 
-    print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
+    print(f"🚀 ChemDescriptorML v{__version__}")
     print(f"📊 Mode: {'GPU' if config.using_gpu else 'CPU'}")
     print(f"📂 Input: {args.parquet_glob}")
     print(f"📁 Output: {args.output_dir}")
@@ -326,7 +326,7 @@ def run_full_pipeline(args):
 
 def run_filter(args):
     """Run filtering passes"""
-    from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+    from Chem_Descriptor_ML.filtering import DescriptorPipeline
 
     if not args.pass_name:
         print("Error: Please specify a pass to run (pass0, pass1, pass234, all)")
@@ -361,7 +361,7 @@ def run_filter(args):
     # Validate and finalize (auto-detect device)
     config.validate_and_finalize()
 
-    print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
+    print(f"🚀 ChemDescriptorML v{__version__}")
     print(f"📊 Mode: {'GPU' if config.using_gpu else 'CPU'}")
     print(f"🔧 Pass: {args.pass_name}")
     print("="*70)
@@ -398,7 +398,7 @@ def run_preprocess(args):
         # Import and run xml_parser
         import subprocess
         cmd = [
-            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.xml_parser',
+            'python', '-m', 'Chem_Descriptor_ML.preprocessing.xml_parser',
             '--input', args.input,
             '--output', args.output
         ]
@@ -417,7 +417,7 @@ def run_preprocess(args):
         # Import and run schema_generator
         import subprocess
         cmd = [
-            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.schema_generator',
+            'python', '-m', 'Chem_Descriptor_ML.preprocessing.schema_generator',
             '-i', args.input,
             '-o', args.output
         ]
@@ -435,7 +435,7 @@ def run_preprocess(args):
         # Import and run descriptor_calculator
         import subprocess
         cmd = [
-            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.descriptor_calculator',
+            'python', '-m', 'Chem_Descriptor_ML.preprocessing.descriptor_calculator',
             '--input', args.input,
             '--output', args.output,
             '--schema', args.schema,
@@ -463,7 +463,7 @@ def run_process_all(args):
     """
     import subprocess
     from pathlib import Path
-    from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+    from Chem_Descriptor_ML.filtering import DescriptorPipeline
     import shutil
 
     output_dir = Path(args.output_dir)
@@ -480,7 +480,7 @@ def run_process_all(args):
     input_lower = str(input_path).lower()
     is_xml = input_lower.endswith('.xml') or input_lower.endswith('.xml.gz')
 
-    print(f"🚀 Molecular Descriptor Toolkit v{__version__}")
+    print(f"🚀 ChemDescriptorML v{__version__}")
     print("=" * 70)
     if is_xml:
         print("📌 Running full process: XML → SMILES → Descriptors → Filtering")
@@ -500,7 +500,7 @@ def run_process_all(args):
         print(f"   Input: {input_path}")
 
         cmd = [
-            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.xml_parser',
+            'python', '-m', 'Chem_Descriptor_ML.preprocessing.xml_parser',
             '--input', str(input_path),
             '--output', str(smiles_path)
         ]
@@ -536,7 +536,7 @@ def run_process_all(args):
         print(f"\n📋 Step {current_step}/{total_steps}: Generating descriptor schema...")
 
         cmd = [
-            'python', '-m', 'molecular_descriptor_toolkit.preprocessing.schema_generator',
+            'python', '-m', 'Chem_Descriptor_ML.preprocessing.schema_generator',
             '--input', str(descriptor_input.parent if descriptor_input.is_file() else descriptor_input),
             '--output', str(schema_path),
             '--quick'
@@ -553,7 +553,7 @@ def run_process_all(args):
     print(f"\n⚗️  Step {current_step}/{total_steps}: Calculating molecular descriptors...")
 
     cmd = [
-        'python', '-m', 'molecular_descriptor_toolkit.preprocessing.descriptor_calculator',
+        'python', '-m', 'Chem_Descriptor_ML.preprocessing.descriptor_calculator',
         '--input', str(descriptor_input),
         '--output', str(descriptors_path),
         '--schema', str(schema_path),
@@ -654,10 +654,10 @@ def run_process_all(args):
 
 def run_train(args):
     """Run ML training with cluster-aware descriptor selection"""
-    from molecular_descriptor_toolkit.ml import OptimalMLEnsemble
+    from Chem_Descriptor_ML.ml import OptimalMLEnsemble
 
     print("=" * 70)
-    print("🤖 Molecular Descriptor Toolkit - ML Training")
+    print("🤖 ChemDescriptorML - ML Training")
     print("=" * 70)
 
     input_path = Path(args.input)

@@ -1,5 +1,5 @@
 """
-Setup script for Molecular Descriptor Toolkit
+Setup script for ChemDescriptorML
 """
 
 from setuptools import setup, find_packages
@@ -10,20 +10,21 @@ readme_file = Path(__file__).parent / "README.md"
 long_description = readme_file.read_text(encoding='utf-8') if readme_file.exists() else ""
 
 setup(
-    name="molecular-descriptor-toolkit",
+    name="ChemDescriptorML",
     version="1.0.0",
     author="KAERI_UES",
     author_email="your.email@kaeri.re.kr",
-    description="GPU-accelerated molecular descriptor calculation and filtering toolkit",
+    description="GPU-accelerated molecular descriptor calculation, filtering, and ML training toolkit",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/your-username/molecular-descriptor-toolkit",
+    url="https://github.com/hyunwoo47p/descriptor-toolkit",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Chemistry",
         "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.11",
@@ -39,6 +40,7 @@ setup(
         "mordred>=1.2.0",
         "tqdm>=4.65.0",
         "scikit-learn>=1.3.0",
+        "matplotlib>=3.7.0",
     ],
     extras_require={
         "dev": [
@@ -49,10 +51,14 @@ setup(
         "gpu": [
             "torch>=2.0.0",  # Install CUDA version separately
         ],
+        "ml": [
+            "xgboost>=2.0.0",
+            "lightgbm>=4.0.0",
+        ],
     },
     entry_points={
         "console_scripts": [
-            "mdt=molecular_descriptor_toolkit.cli:main",
+            "cdml=Chem_Descriptor_ML.cli:main",
         ],
     },
     include_package_data=True,

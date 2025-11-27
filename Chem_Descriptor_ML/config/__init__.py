@@ -1,6 +1,6 @@
 """Configuration module for Molecular Descriptor Toolkit"""
 
-from molecular_descriptor_toolkit.config.settings import (
+from Chem_Descriptor_ML.config.settings import (
     Config,
     DeviceConfig,
     IOConfig,
@@ -17,7 +17,7 @@ from molecular_descriptor_toolkit.config.settings import (
     PipelineConfig,  # Backward compatibility alias
 )
 
-from molecular_descriptor_toolkit.config.loader import (
+from Chem_Descriptor_ML.config.loader import (
     load_config,
     save_config,
     check_unknown_keys,

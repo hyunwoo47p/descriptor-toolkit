@@ -20,9 +20,9 @@ import pyarrow as pa
 import pyarrow.dataset as ds
 import pyarrow.compute as pc
 
-from molecular_descriptor_toolkit.config.settings import FilteringConfig, IOConfig, SystemConfig
-from molecular_descriptor_toolkit.filtering.utils.logging import log
-from molecular_descriptor_toolkit.filtering.io.parquet_reader import iter_batches
+from Chem_Descriptor_ML.config.settings import FilteringConfig, IOConfig, SystemConfig
+from Chem_Descriptor_ML.filtering.utils.logging import log
+from Chem_Descriptor_ML.filtering.io.parquet_reader import iter_batches
 
 
 # Numerical constants

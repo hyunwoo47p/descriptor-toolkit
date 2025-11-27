@@ -15,11 +15,11 @@ from pathlib import Path
 from typing import List, Dict, Optional, Tuple, Any
 import json
 
-from molecular_descriptor_toolkit.config.settings import FilteringConfig, IOConfig, SystemConfig
-from molecular_descriptor_toolkit.filtering.utils.logging import log
+from Chem_Descriptor_ML.config.settings import FilteringConfig, IOConfig, SystemConfig
+from Chem_Descriptor_ML.filtering.utils.logging import log
 
 # CPU 버전의 DisjointSet 재사용
-from molecular_descriptor_toolkit.filtering.passes.spearman_clustering import DisjointSet
+from Chem_Descriptor_ML.filtering.passes.spearman_clustering import DisjointSet
 
 
 class VIFFilteringPassGPU:

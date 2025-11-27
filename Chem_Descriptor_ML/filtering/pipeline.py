@@ -18,21 +18,21 @@ from pathlib import Path
 from typing import List, Dict, Optional, Any, Set
 import pyarrow.dataset as ds
 
-from molecular_descriptor_toolkit.config.settings import Config
-from molecular_descriptor_toolkit.filtering.utils.logging import log
-from molecular_descriptor_toolkit.filtering.utils.gpu import get_optimal_device
-from molecular_descriptor_toolkit.filtering.passes.pass0_sampling import SamplingPass
-from molecular_descriptor_toolkit.filtering.passes.pass1_statistics import StatisticsAndVarianceFilter
-from molecular_descriptor_toolkit.filtering.passes.pass2_correlation import SpearmanComputerGPU
-from molecular_descriptor_toolkit.filtering.passes.pass4_nonlinear import NonlinearDetectionPassGPU
-from molecular_descriptor_toolkit.filtering.passes.pass3_vif import VIFFilteringPassGPUWithClusters
-from molecular_descriptor_toolkit.filtering.passes.graph_builder import GraphBuilder, LeidenClustering
-from molecular_descriptor_toolkit.filtering.passes.seed_manager import SeedManager
-from molecular_descriptor_toolkit.filtering.io.parquet_reader import iter_batches
+from Chem_Descriptor_ML.config.settings import Config
+from Chem_Descriptor_ML.filtering.utils.logging import log
+from Chem_Descriptor_ML.filtering.utils.gpu import get_optimal_device
+from Chem_Descriptor_ML.filtering.passes.pass0_sampling import SamplingPass
+from Chem_Descriptor_ML.filtering.passes.pass1_statistics import StatisticsAndVarianceFilter
+from Chem_Descriptor_ML.filtering.passes.pass2_correlation import SpearmanComputerGPU
+from Chem_Descriptor_ML.filtering.passes.pass4_nonlinear import NonlinearDetectionPassGPU
+from Chem_Descriptor_ML.filtering.passes.pass3_vif import VIFFilteringPassGPUWithClusters
+from Chem_Descriptor_ML.filtering.passes.graph_builder import GraphBuilder, LeidenClustering
+from Chem_Descriptor_ML.filtering.passes.seed_manager import SeedManager
+from Chem_Descriptor_ML.filtering.io.parquet_reader import iter_batches
 
 # Import new iterative VIF (conditional for backward compatibility)
 try:
-    from molecular_descriptor_toolkit.filtering.passes.vif_iterative import IterativeVIFFiltering
+    from Chem_Descriptor_ML.filtering.passes.vif_iterative import IterativeVIFFiltering
     ITERATIVE_VIF_AVAILABLE = True
 except ImportError:
     ITERATIVE_VIF_AVAILABLE = False
@@ -299,7 +299,7 @@ class DescriptorPipeline:
                 np.save(str(pass2_graph_file), G_spearman)
             
             # Cluster and filter (no data loading needed - uses stats)
-            from molecular_descriptor_toolkit.filtering.passes.spearman_clustering import SpearmanClusteringPass
+            from Chem_Descriptor_ML.filtering.passes.spearman_clustering import SpearmanClusteringPass
             spearman_pass = SpearmanClusteringPass(self.config, self.system_cfg.verbose)
             columns_p2, spearman_info, indices_p2 = spearman_pass.process(
                 None, columns_p1, G_spearman, stats_p1  # Pass None for data - uses stats instead
@@ -529,7 +529,7 @@ class DescriptorPipeline:
             stats_p3 = self._filter_stats_by_indices(stats_p1, indices_p3)
             
             # Compute HSIC and RDC
-            from molecular_descriptor_toolkit.filtering.passes.pass2_correlation import HSICComputerGPU, RDCComputerGPU
+            from Chem_Descriptor_ML.filtering.passes.pass2_correlation import HSICComputerGPU, RDCComputerGPU
             
             w_hsic, w_rdc = self.filtering_cfg.w_hsic, self.filtering_cfg.w_rdc
             

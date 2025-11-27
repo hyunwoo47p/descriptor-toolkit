@@ -7,14 +7,14 @@ This script demonstrates the basic usage of MDT for both
 API and CLI approaches.
 """
 
-from molecular_descriptor_toolkit.config import (
+from Chem_Descriptor_ML.config import (
     Config,
     IOConfig,
     DeviceConfig,
     FilteringConfig,
     SystemConfig,
 )
-from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+from Chem_Descriptor_ML.filtering import DescriptorPipeline
 
 
 def example_full_pipeline():

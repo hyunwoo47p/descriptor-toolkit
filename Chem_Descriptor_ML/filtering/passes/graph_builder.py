@@ -9,9 +9,9 @@ from typing import Tuple
 from scipy.spatial.distance import squareform
 from scipy.cluster.hierarchy import linkage, fcluster
 
-from molecular_descriptor_toolkit.config.settings import FilteringConfig, SystemConfig
-from molecular_descriptor_toolkit.filtering.passes.seed_manager import SeedManager
-from molecular_descriptor_toolkit.filtering.utils.logging import log
+from Chem_Descriptor_ML.config.settings import FilteringConfig, SystemConfig
+from Chem_Descriptor_ML.filtering.passes.seed_manager import SeedManager
+from Chem_Descriptor_ML.filtering.utils.logging import log
 
 
 class GraphBuilder:

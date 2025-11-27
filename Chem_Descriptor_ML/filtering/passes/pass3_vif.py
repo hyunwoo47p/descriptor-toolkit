@@ -32,8 +32,8 @@ This is theoretically sound because:
 import numpy as np
 import torch
 from typing import List, Dict, Tuple
-from molecular_descriptor_toolkit.config.settings import FilteringConfig, IOConfig, SystemConfig
-from molecular_descriptor_toolkit.filtering.utils.logging import log
+from Chem_Descriptor_ML.config.settings import FilteringConfig, IOConfig, SystemConfig
+from Chem_Descriptor_ML.filtering.utils.logging import log
 
 
 class VIFFilteringPassGPUWithClusters:

@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List, Optional
 import logging
 
-from molecular_descriptor_toolkit.config.settings import (
+from Chem_Descriptor_ML.config.settings import (
     PreprocessingConfig,
     DescriptorConfig,
     IOConfig,
@@ -68,7 +68,7 @@ class PreprocessingPipeline:
         Returns:
             List of output CSV file paths
         """
-        from molecular_descriptor_toolkit.preprocessing import xml_parser
+        from Chem_Descriptor_ML.preprocessing import xml_parser
         
         self.logger.info(f"Parsing {len(xml_files)} XML files to CSV...")
         
@@ -94,7 +94,7 @@ class PreprocessingPipeline:
         Returns:
             Output Parquet file path
         """
-        from molecular_descriptor_toolkit.preprocessing import descriptor_calculator
+        from Chem_Descriptor_ML.preprocessing import descriptor_calculator
         
         self.logger.info(f"Calculating descriptors for {len(input_files)} files...")
         
@@ -177,8 +177,8 @@ def run_preprocessing(
     Convenience function to run preprocessing pipeline
     
     Example:
-        from molecular_descriptor_toolkit.config import load_config
-        from molecular_descriptor_toolkit.preprocessing.pipeline import run_preprocessing
+        from Chem_Descriptor_ML.config import load_config
+        from Chem_Descriptor_ML.preprocessing.pipeline import run_preprocessing
         
         config = load_config("settings.yaml")
         result = run_preprocessing(

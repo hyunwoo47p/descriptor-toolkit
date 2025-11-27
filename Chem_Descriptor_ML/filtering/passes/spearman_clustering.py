@@ -16,9 +16,9 @@ from statsmodels.tools.tools import add_constant
 from scipy.stats import spearmanr
 import json
 
-from molecular_descriptor_toolkit.config.settings import PipelineConfig
-from molecular_descriptor_toolkit.filtering.passes.seed_manager import SeedManager
-from molecular_descriptor_toolkit.filtering.utils.logging import log
+from Chem_Descriptor_ML.config.settings import PipelineConfig
+from Chem_Descriptor_ML.filtering.passes.seed_manager import SeedManager
+from Chem_Descriptor_ML.filtering.utils.logging import log
 
 
 # ============================================================================
