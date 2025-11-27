@@ -80,6 +80,7 @@ class OptimalMLEnsemble:
         data_path: Union[str, Path],
         target_col: str = 'pLeach',
         cluster_info_path: Optional[Union[str, Path]] = None,
+        test_data_path: Optional[Union[str, Path]] = None,
         test_size: float = 0.2,
         cv_folds: int = 5,
         random_state: int = 42,
@@ -89,10 +90,12 @@ class OptimalMLEnsemble:
         Initialize ML Ensemble.
 
         Args:
-            data_path: Path to labeled data (.parquet or .csv)
+            data_path: Path to training data (.parquet or .csv)
             target_col: Target column name for prediction
             cluster_info_path: Path to final_cluster_info.json (optional)
-            test_size: Hold-out test ratio (default 0.2)
+            test_data_path: Path to separate test data (.parquet or .csv).
+                           If provided, test_size is ignored and this file is used as test set.
+            test_size: Hold-out test ratio (default 0.2). Ignored if test_data_path is provided.
             cv_folds: K-Fold CV folds (default 5)
             random_state: Random seed for reproducibility
             use_regularization: If True, apply strong regularization to models (default False)
@@ -100,10 +103,12 @@ class OptimalMLEnsemble:
         self.data_path = Path(data_path)
         self.target_col = target_col
         self.cluster_info_path = Path(cluster_info_path) if cluster_info_path else None
+        self.test_data_path = Path(test_data_path) if test_data_path else None
         self.test_size = test_size
         self.cv_folds = cv_folds
         self.random_state = random_state
         self.use_regularization = use_regularization
+        self.use_external_test = test_data_path is not None
 
         # Results storage
         self.results = []
@@ -120,24 +125,38 @@ class OptimalMLEnsemble:
         print("=" * 80)
         print("OPTIMAL ML ENSEMBLE INITIALIZED")
         print("=" * 80)
-        print(f"Total samples: {len(self.df)}")
+        print(f"Train samples: {len(self.df)}")
+        if self.use_external_test:
+            print(f"Test samples: {len(self.df_test)} (external file)")
+        else:
+            print(f"Test split: {test_size*100:.0f}% (random)")
         print(f"Total descriptors: {len(self.descriptor_cols)}")
         print(f"Target: {self.target_col}")
         print(f"CV Folds: {cv_folds}")
-        print(f"Test size: {test_size*100:.0f}%")
         print(f"Regularization: {'ON (strong)' if use_regularization else 'OFF (default params)'}")
         if self.cluster_info:
             print(f"Cluster info: {len(self.cluster_info['descriptors'])} representative descriptors")
         print("=" * 80 + "\n")
 
     def _load_data(self):
-        """Load data from parquet or CSV"""
+        """Load training data (and optionally separate test data) from parquet or CSV"""
+        # Load training data
         if self.data_path.suffix == '.parquet':
             self.df = pd.read_parquet(self.data_path)
         elif self.data_path.suffix == '.csv':
             self.df = pd.read_csv(self.data_path)
         else:
             raise ValueError(f"Unsupported file format: {self.data_path.suffix}")
+
+        # Load external test data if provided
+        self.df_test = None
+        if self.test_data_path:
+            if self.test_data_path.suffix == '.parquet':
+                self.df_test = pd.read_parquet(self.test_data_path)
+            elif self.test_data_path.suffix == '.csv':
+                self.df_test = pd.read_csv(self.test_data_path)
+            else:
+                raise ValueError(f"Unsupported test file format: {self.test_data_path.suffix}")
 
         # Identify descriptor columns (exclude metadata and target)
         exclude_cols = set(self.METADATA_COLS) | {self.target_col}
@@ -151,7 +170,11 @@ class OptimalMLEnsemble:
         numeric_cols = self.df[self.descriptor_cols].select_dtypes(include=[np.number]).columns.tolist()
         self.descriptor_cols = numeric_cols
 
-        print(f"Data loaded: {len(self.df)} samples, {len(self.descriptor_cols)} descriptors")
+        if self.df_test is not None:
+            print(f"Train data loaded: {len(self.df)} samples, {len(self.descriptor_cols)} descriptors")
+            print(f"Test data loaded: {len(self.df_test)} samples (external file)")
+        else:
+            print(f"Data loaded: {len(self.df)} samples, {len(self.descriptor_cols)} descriptors")
 
     def _load_cluster_info(self):
         """Load cluster info from JSON"""
@@ -368,21 +391,36 @@ class OptimalMLEnsemble:
         return models[model_name]
 
     def _prepare_data(self, descriptors: List[str]) -> Tuple:
-        """Prepare data: NaN handling + Scaling + Train/Test Split"""
-        X = self.df[descriptors].values
-        y = self.df[self.target_col].values
+        """Prepare data: NaN handling + Scaling + Train/Test Split
 
-        # Handle NaN (mean imputation)
-        mask = np.isnan(X)
-        if mask.any():
-            col_means = np.nanmean(X, axis=0)
-            for col_idx in range(X.shape[1]):
-                X[mask[:, col_idx], col_idx] = col_means[col_idx]
+        If external test data is provided (self.use_external_test), use it directly.
+        Otherwise, perform train_test_split on the training data.
+        """
+        X_train = self.df[descriptors].values
+        y_train = self.df[self.target_col].values
 
-        # Train/Test Split
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=self.test_size, random_state=self.random_state
-        )
+        # Handle NaN in training data (mean imputation)
+        mask_train = np.isnan(X_train)
+        col_means = np.nanmean(X_train, axis=0)
+        if mask_train.any():
+            for col_idx in range(X_train.shape[1]):
+                X_train[mask_train[:, col_idx], col_idx] = col_means[col_idx]
+
+        if self.use_external_test and self.df_test is not None:
+            # Use external test data
+            X_test = self.df_test[descriptors].values
+            y_test = self.df_test[self.target_col].values
+
+            # Handle NaN in test data (use training data means)
+            mask_test = np.isnan(X_test)
+            if mask_test.any():
+                for col_idx in range(X_test.shape[1]):
+                    X_test[mask_test[:, col_idx], col_idx] = col_means[col_idx]
+        else:
+            # Random train/test split
+            X_train, X_test, y_train, y_test = train_test_split(
+                X_train, y_train, test_size=self.test_size, random_state=self.random_state
+            )
 
         # Scaling
         scaler = StandardScaler()

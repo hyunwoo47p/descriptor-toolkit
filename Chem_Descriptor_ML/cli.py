@@ -175,7 +175,9 @@ For more information, visit: https://github.com/your-repo
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     train_parser.add_argument('--input', required=True,
-        help='Input data file (.parquet or .csv) with descriptors and target')
+        help='Input training data file (.parquet or .csv) with descriptors and target')
+    train_parser.add_argument('--test-input', default=None,
+        help='Optional separate test data file (.parquet or .csv). If provided, --test-size is ignored')
     train_parser.add_argument('--cluster-info',
         help='Path to final_cluster_info.json for cluster-aware descriptor selection')
     train_parser.add_argument('--target-col', default='pLeach',
@@ -190,7 +192,7 @@ For more information, visit: https://github.com/your-repo
     train_parser.add_argument('--models', default=None,
         help='Comma-separated list of models (default: all available)')
     train_parser.add_argument('--test-size', type=float, default=0.2,
-        help='Hold-out test set ratio')
+        help='Hold-out test set ratio (ignored if --test-input is provided)')
     train_parser.add_argument('--cv-folds', type=int, default=5,
         help='K-Fold cross-validation folds')
     train_parser.add_argument('--random-seed', type=int, default=42,
@@ -665,6 +667,14 @@ def run_train(args):
         print(f"❌ Input file not found: {input_path}")
         return 1
 
+    # Check test input if provided
+    test_input_path = None
+    if args.test_input:
+        test_input_path = Path(args.test_input)
+        if not test_input_path.exists():
+            print(f"❌ Test input file not found: {test_input_path}")
+            return 1
+
     # Parse descriptor sizes
     descriptor_sizes = [int(x.strip()) for x in args.descriptor_sizes.split(',')]
 
@@ -674,7 +684,12 @@ def run_train(args):
         models = [x.strip() for x in args.models.split(',')]
 
     # Initialize ensemble
-    print(f"\n📊 Loading data from: {input_path}")
+    print(f"\n📊 Loading data:")
+    print(f"   Train data: {input_path}")
+    if test_input_path:
+        print(f"   Test data: {test_input_path} (external)")
+    else:
+        print(f"   Test split: {args.test_size*100:.0f}% (random)")
     print(f"   Target column: {args.target_col}")
 
     cluster_info_path = args.cluster_info if args.cluster_info else None
@@ -684,6 +699,7 @@ def run_train(args):
     try:
         ensemble = OptimalMLEnsemble(
             data_path=str(input_path),
+            test_data_path=str(test_input_path) if test_input_path else None,
             target_col=args.target_col,
             cluster_info_path=cluster_info_path,
             test_size=args.test_size,
