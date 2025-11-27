@@ -47,7 +47,7 @@ setup(
             "ruff>=0.1.0",
         ],
         "gpu": [
-            "torch>=2.0.0+cu118",
+            "torch>=2.0.0",  # Install CUDA version separately
         ],
     },
     entry_points={

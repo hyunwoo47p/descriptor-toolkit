@@ -168,6 +168,38 @@ For more information, visit: https://github.com/your-repo
     process_all_parser.add_argument('--vif-threshold', type=float, default=10.0)
     process_all_parser.add_argument('--nonlinear-threshold', type=float, default=0.3)
 
+    # ===== Train command (ML Training) =====
+    train_parser = subparsers.add_parser(
+        'train',
+        help='Train ML models using filtered descriptors',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter
+    )
+    train_parser.add_argument('--input', required=True,
+        help='Input data file (.parquet or .csv) with descriptors and target')
+    train_parser.add_argument('--cluster-info',
+        help='Path to final_cluster_info.json for cluster-aware descriptor selection')
+    train_parser.add_argument('--target-col', default='pLeach',
+        help='Target column name for prediction')
+    train_parser.add_argument('--output-dir', default='ml_output',
+        help='Output directory for ML results')
+    train_parser.add_argument('--descriptor-sizes', default='5,10,15,20,30,40,50',
+        help='Comma-separated list of descriptor counts to try')
+    train_parser.add_argument('--descriptor-mode', default='sequential',
+        choices=['sequential', 'representative', 'random_alternative', 'mixed'],
+        help='Descriptor selection mode: sequential (original order), representative, random_alternative, mixed')
+    train_parser.add_argument('--models', default=None,
+        help='Comma-separated list of models (default: all available)')
+    train_parser.add_argument('--test-size', type=float, default=0.2,
+        help='Hold-out test set ratio')
+    train_parser.add_argument('--cv-folds', type=int, default=5,
+        help='K-Fold cross-validation folds')
+    train_parser.add_argument('--random-seed', type=int, default=42,
+        help='Random seed for reproducibility')
+    train_parser.add_argument('--regularization', action='store_true',
+        help='Apply strong regularization to models (for small datasets)')
+    train_parser.add_argument('--no-plots', action='store_true',
+        help='Skip generating plots')
+
     return parser
 
 
@@ -234,6 +266,8 @@ def main():
         return run_preprocess(args)
     elif args.command == 'process-all':
         return run_process_all(args)
+    elif args.command == 'train':
+        return run_train(args)
     else:
         parser.print_help()
         return 1
@@ -256,6 +290,8 @@ def run_full_pipeline(args):
         filtering=FilteringConfig(
             sample_per_file=getattr(args, 'sample_per_file', None),
             variance_threshold=getattr(args, 'variance_threshold', 0.002),
+            max_missing_ratio=getattr(args, 'max_missing_ratio', 0.5),
+            min_effective_n=getattr(args, 'min_effective_n', 100),
             spearman_threshold=getattr(args, 'spearman_threshold', 0.95),
             vif_threshold=getattr(args, 'vif_threshold', 10.0),
             nonlinear_threshold=getattr(args, 'nonlinear_threshold', 0.3),
@@ -428,10 +464,17 @@ def run_process_all(args):
     import subprocess
     from pathlib import Path
     from molecular_descriptor_toolkit.filtering import DescriptorPipeline
+    import shutil
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     input_path = Path(args.input)
+
+    # Create subdirectories
+    outputs_dir = output_dir / "outputs"
+    tmp_dir = output_dir / "tmp"
+    outputs_dir.mkdir(parents=True, exist_ok=True)
+    tmp_dir.mkdir(parents=True, exist_ok=True)
 
     # Detect input format
     input_lower = str(input_path).lower()
@@ -446,13 +489,13 @@ def run_process_all(args):
     print("=" * 70)
 
     # Determine step count
-    total_steps = 4 if is_xml else 3
+    total_steps = 5 if is_xml else 4  # Added cleanup step
     current_step = 0
 
     # Step 0 (XML only): Parse XML to extract SMILES/InChI
     if is_xml:
         current_step += 1
-        smiles_path = output_dir / "extracted_molecules.parquet"
+        smiles_path = tmp_dir / "extracted_molecules.parquet"
         print(f"\n📄 Step {current_step}/{total_steps}: Parsing PubChem XML...")
         print(f"   Input: {input_path}")
 
@@ -489,7 +532,7 @@ def run_process_all(args):
         schema_path = Path(args.schema)
         print(f"\n📋 Step {current_step}/{total_steps}: Using provided schema: {schema_path}")
     else:
-        schema_path = output_dir / "generated_schema.json"
+        schema_path = tmp_dir / "descriptor_schema.json"
         print(f"\n📋 Step {current_step}/{total_steps}: Generating descriptor schema...")
 
         cmd = [
@@ -506,7 +549,7 @@ def run_process_all(args):
 
     # Step 2: Descriptor calculation
     current_step += 1
-    descriptors_path = output_dir / "descriptors.parquet"
+    descriptors_path = tmp_dir / "descriptors.parquet"
     print(f"\n⚗️  Step {current_step}/{total_steps}: Calculating molecular descriptors...")
 
     cmd = [
@@ -530,13 +573,13 @@ def run_process_all(args):
 
     # Step 3 (or 4): Filtering pipeline
     current_step += 1
-    filtering_output = output_dir / "filtering"
+    filtering_tmp = tmp_dir / "filtering"
     print(f"\n🔬 Step {current_step}/{total_steps}: Running filtering pipeline...")
 
     config = Config(
         io=IOConfig(
             parquet_glob=str(descriptors_path),
-            output_dir=str(filtering_output),
+            output_dir=str(filtering_tmp),
         ),
         device=DeviceConfig(
             prefer_gpu=not args.cpu,
@@ -561,20 +604,151 @@ def run_process_all(args):
     print(f"   Mode: {'GPU' if config.using_gpu else 'CPU'}")
 
     pipeline = DescriptorPipeline(config)
-    result = pipeline.run()
+    pipeline_result = pipeline.run()
+
+    # Step 4 (or 5): Organize output files
+    current_step += 1
+    print(f"\n📁 Step {current_step}/{total_steps}: Organizing output files...")
+
+    # Move main outputs to outputs/ folder
+    final_outputs = {
+        'descriptor_schema.json': schema_path,
+        'descriptors.parquet': descriptors_path,
+        'final_cluster_info.json': filtering_tmp / 'final_cluster_info.json',
+        'final_descriptors.txt': filtering_tmp / 'final_descriptors.txt',
+    }
+
+    for dest_name, src_path in final_outputs.items():
+        dest_path = outputs_dir / dest_name
+        if src_path.exists():
+            shutil.copy2(src_path, dest_path)
+            print(f"   ✓ {dest_name}")
+
+    # Clean up descriptors.parts (intermediate chunks no longer needed)
+    parts_dir = tmp_dir / "descriptors.parts"
+    if parts_dir.exists() and descriptors_path.exists():
+        shutil.rmtree(parts_dir)
+
+    print(f"   ✓ Main outputs saved to: {outputs_dir}")
+    print(f"   ✓ Intermediate files in: {tmp_dir}")
 
     # Summary
     print("\n" + "=" * 70)
     print("✅ Full Pipeline Completed!")
     print("=" * 70)
     print(f"📂 Input: {args.input}")
-    if is_xml:
-        print(f"📄 Extracted molecules: {smiles_path}")
     print(f"📁 Output directory: {output_dir}")
-    print(f"📋 Schema: {schema_path}")
-    print(f"📊 Descriptors: {descriptors_path}")
-    print(f"🔬 Filtering results: {filtering_output}")
-    print(f"📈 Final descriptors: {len(result['final_columns'])}")
+    print()
+    print("📦 Main outputs (outputs/):")
+    print(f"   • descriptor_schema.json  - Descriptor schema")
+    print(f"   • descriptors.parquet     - Calculated descriptors")
+    print(f"   • final_cluster_info.json - Cluster structure info")
+    print(f"   • final_descriptors.txt   - Final descriptor list ({len(pipeline_result['final_columns'])} descriptors)")
+    print()
+    print("🗂️  Intermediate files (tmp/):")
+    print(f"   • pass1~4 results, correlation matrix, etc.")
+    print("=" * 70)
+
+    return 0
+
+
+def run_train(args):
+    """Run ML training with cluster-aware descriptor selection"""
+    from molecular_descriptor_toolkit.ml import OptimalMLEnsemble
+
+    print("=" * 70)
+    print("🤖 Molecular Descriptor Toolkit - ML Training")
+    print("=" * 70)
+
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print(f"❌ Input file not found: {input_path}")
+        return 1
+
+    # Parse descriptor sizes
+    descriptor_sizes = [int(x.strip()) for x in args.descriptor_sizes.split(',')]
+
+    # Parse models if specified
+    models = None
+    if args.models:
+        models = [x.strip() for x in args.models.split(',')]
+
+    # Initialize ensemble
+    print(f"\n📊 Loading data from: {input_path}")
+    print(f"   Target column: {args.target_col}")
+
+    cluster_info_path = args.cluster_info if args.cluster_info else None
+    if cluster_info_path:
+        print(f"   Cluster info: {cluster_info_path}")
+
+    try:
+        ensemble = OptimalMLEnsemble(
+            data_path=str(input_path),
+            target_col=args.target_col,
+            cluster_info_path=cluster_info_path,
+            test_size=args.test_size,
+            cv_folds=args.cv_folds,
+            random_state=args.random_seed,
+            use_regularization=args.regularization
+        )
+    except Exception as e:
+        print(f"❌ Failed to initialize: {e}")
+        return 1
+
+    # Train all models
+    print(f"\n🏋️ Training models...")
+    print(f"   Descriptor sizes: {descriptor_sizes}")
+    print(f"   Descriptor mode: {args.descriptor_mode}")
+
+    try:
+        ensemble.train_all_models(
+            descriptor_sizes=descriptor_sizes,
+            descriptor_mode=args.descriptor_mode,
+            models=models
+        )
+    except Exception as e:
+        print(f"❌ Training failed: {e}")
+        import traceback
+        traceback.print_exc()
+        return 1
+
+    # Find best model
+    print("\n🏆 Finding best model...")
+    best = ensemble.find_best_model(metric='holdout_r2')
+
+    # Save results
+    output_dir = Path(args.output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    print(f"\n💾 Saving results to: {output_dir}")
+    ensemble.save_results(output_dir=str(output_dir))
+
+    # Generate plots
+    if not args.no_plots:
+        print("\n📈 Generating plots...")
+        try:
+            ensemble.plot_model_comparison(output_dir=str(output_dir))
+        except Exception as e:
+            print(f"   ⚠️ Plot generation failed: {e}")
+
+    # Summary
+    print("\n" + "=" * 70)
+    print("✅ ML Training Completed!")
+    print("=" * 70)
+    print(f"📁 Output directory: {output_dir}")
+    print()
+    print("📊 Best Model:")
+    print(f"   • Model: {best['model_name']}")
+    print(f"   • Descriptors: {best['n_descriptors']}")
+    print(f"   • K-Fold R²: {best['kfold_r2_mean']:.4f} ± {best['kfold_r2_std']:.4f}")
+    print(f"   • Hold-Out R²: {best['holdout_r2']:.4f}")
+    print(f"   • Overfitting Gap: {best['overfitting_gap']:.4f}")
+    print()
+    print("📦 Output files:")
+    print(f"   • ml_results.json        - All experiment results")
+    print(f"   • best_model.json        - Best model details")
+    if not args.no_plots:
+        print(f"   • *.png                  - Comparison plots")
     print("=" * 70)
 
     return 0

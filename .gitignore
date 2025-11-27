@@ -7,13 +7,17 @@ build/
 
 # 데이터 (Git에 올리지 않음)
 *.parquet
-*.csv
 *.pkl
 *.h5
 data/
 output/
+outputs/
 results/
 logs/
+tmp/
+
+# reference 폴더의 CSV는 예외
+!reference/*.csv
 
 # IDE
 .idea/
@@ -21,8 +25,17 @@ logs/
 
 # OS
 .DS_Store
+*:Zone.Identifier
 
 # Test outputs
 test_*/
 test_output/
+track*_output/
+
+# 참조용 대용량 파일 (선택적)
+*.zip
+*.docx
+
+# Claude 설정
+.claude/
 
