@@ -167,6 +167,8 @@ For more information, visit: https://github.com/your-repo
     process_all_parser.add_argument('--spearman-threshold', type=float, default=0.95)
     process_all_parser.add_argument('--vif-threshold', type=float, default=10.0)
     process_all_parser.add_argument('--nonlinear-threshold', type=float, default=0.3)
+    process_all_parser.add_argument('--min-effective-n', type=int, default=100,
+        help='Minimum effective sample size for filtering (set lower for small datasets)')
 
     # ===== Train command (ML Training) =====
     train_parser = subparsers.add_parser(
@@ -592,6 +594,7 @@ def run_process_all(args):
             spearman_threshold=args.spearman_threshold,
             vif_threshold=args.vif_threshold,
             nonlinear_threshold=args.nonlinear_threshold,
+            min_effective_n=args.min_effective_n,
         ),
         system=SystemConfig(
             checkpoint=not args.no_checkpoint,

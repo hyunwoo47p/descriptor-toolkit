@@ -1,0 +1,31 @@
+{
+  "model_name": "LightGBM",
+  "n_descriptors": 5,
+  "descriptors": [
+    "ATSC3c",
+    "JGI8",
+    "Xch-4d",
+    "VSA_EState6",
+    "nS"
+  ],
+  "kfold_r2_mean": 0.07729763492053636,
+  "kfold_r2_std": 0.24380589296786964,
+  "train_r2": 0.19564652941521488,
+  "train_rmse": 3.860404560026016,
+  "train_mae": 2.8835199714647906,
+  "holdout_r2": 0.49933671319198925,
+  "holdout_rmse": 1.8707624546926849,
+  "holdout_mae": 1.5497467981201871,
+  "overfitting_gap": -0.30369018377677437,
+  "extreme_high_mae": 1.9007462539513937,
+  "extreme_high_n": 3,
+  "extreme_low_mae": 1.9482544602308618,
+  "extreme_low_n": 3,
+  "feature_importance": {
+    "ATSC3c": 88.0,
+    "JGI8": 0.0,
+    "Xch-4d": 0.0,
+    "VSA_EState6": 12.0,
+    "nS": 0.0
+  }
+}
