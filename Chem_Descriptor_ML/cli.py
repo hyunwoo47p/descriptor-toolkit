@@ -163,10 +163,16 @@ For more information, visit: https://github.com/your-repo
     process_all_parser.add_argument('--filter-min', type=float, help='XML: Minimum value for filter')
     process_all_parser.add_argument('--filter-max', type=float, help='XML: Maximum value for filter')
     # Filtering parameters
-    process_all_parser.add_argument('--variance-threshold', type=float, default=0.002)
-    process_all_parser.add_argument('--spearman-threshold', type=float, default=0.95)
-    process_all_parser.add_argument('--vif-threshold', type=float, default=10.0)
-    process_all_parser.add_argument('--nonlinear-threshold', type=float, default=0.3)
+    process_all_parser.add_argument('--variance-threshold', type=float, default=0.002,
+        help='Minimum normalized variance to keep a descriptor')
+    process_all_parser.add_argument('--max-missing-ratio', type=float, default=0.5,
+        help='Maximum ratio of missing values allowed (0.0-1.0)')
+    process_all_parser.add_argument('--spearman-threshold', type=float, default=0.95,
+        help='Spearman correlation threshold for clustering')
+    process_all_parser.add_argument('--vif-threshold', type=float, default=10.0,
+        help='VIF threshold for multicollinearity filtering')
+    process_all_parser.add_argument('--nonlinear-threshold', type=float, default=0.3,
+        help='HSIC/RDC threshold for nonlinear correlation')
     process_all_parser.add_argument('--min-effective-n', type=int, default=100,
         help='Minimum effective sample size for filtering (set lower for small datasets)')
 
@@ -591,6 +597,7 @@ def run_process_all(args):
         ),
         filtering=FilteringConfig(
             variance_threshold=args.variance_threshold,
+            max_missing_ratio=args.max_missing_ratio,
             spearman_threshold=args.spearman_threshold,
             vif_threshold=args.vif_threshold,
             nonlinear_threshold=args.nonlinear_threshold,
