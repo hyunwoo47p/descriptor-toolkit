@@ -1,0 +1,19 @@
+{
+  "pass": "pass4_nonlinear_filtering",
+  "input_columns": 80,
+  "output_columns": 71,
+  "removed_columns": 9,
+  "nonlinear_threshold": 0.85,
+  "method": "HSIC+RDC",
+  "removed_descriptors": [
+    "AATSC1Z",
+    "AATSC1are",
+    "AATSC1c",
+    "AATSC1d",
+    "AATSC1dv",
+    "AATSC1i",
+    "AATSC1m",
+    "AATSC1p",
+    "AATSC1pe"
+  ]
+}

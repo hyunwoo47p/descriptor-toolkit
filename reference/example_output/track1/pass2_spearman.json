@@ -1,0 +1,1449 @@
+{
+  "pass": "pass2_spearman_clustering",
+  "input_columns": 900,
+  "n_clusters": 120,
+  "representative_descriptors": 120,
+  "spearman_threshold": 0.75,
+  "clusters": {
+    "cluster_0": {
+      "representative": "AATS0Z",
+      "members": [
+        "AATS0Z",
+        "AATS0are",
+        "AATS0d",
+        "AATS0dv",
+        "AATS0i",
+        "AATS0m",
+        "AATS0p"
+      ]
+    },
+    "cluster_1": {
+      "representative": "AATS0are",
+      "members": [
+        "AATS0pe",
+        "AATS0se",
+        "AATS0v",
+        "AATS1Z",
+        "AATS1are",
+        "AATS1d",
+        "AATS1dv"
+      ]
+    },
+    "cluster_2": {
+      "representative": "AATS0d",
+      "members": [
+        "AATS1i",
+        "AATS1m",
+        "AATS1p",
+        "AATS1pe",
+        "AATS1se",
+        "AATS1v",
+        "AATS2Z"
+      ]
+    },
+    "cluster_3": {
+      "representative": "AATS0dv",
+      "members": [
+        "AATS2are",
+        "AATS2d",
+        "AATS2dv",
+        "AATS2i",
+        "AATS2m",
+        "AATS2p",
+        "AATS2pe"
+      ]
+    },
+    "cluster_4": {
+      "representative": "AATS0i",
+      "members": [
+        "AATS2se",
+        "AATS2v",
+        "AATS3Z",
+        "AATS3are",
+        "AATS3d",
+        "AATS3dv",
+        "AATS3i"
+      ]
+    },
+    "cluster_5": {
+      "representative": "AATS0m",
+      "members": [
+        "AATS3m",
+        "AATS3p",
+        "AATS3pe",
+        "AATS3se",
+        "AATS3v",
+        "AATS4Z",
+        "AATS4are"
+      ]
+    },
+    "cluster_6": {
+      "representative": "AATS0p",
+      "members": [
+        "AATS4d",
+        "AATS4dv",
+        "AATS4i",
+        "AATS4m",
+        "AATS4p",
+        "AATS4pe",
+        "AATS4se"
+      ]
+    },
+    "cluster_7": {
+      "representative": "AATS0pe",
+      "members": [
+        "AATS4v",
+        "AATS5Z",
+        "AATS5are",
+        "AATS5d",
+        "AATS5dv",
+        "AATS5i",
+        "AATS5m"
+      ]
+    },
+    "cluster_8": {
+      "representative": "AATS0se",
+      "members": [
+        "AATS5p",
+        "AATS5pe",
+        "AATS5se",
+        "AATS5v",
+        "AATSC0Z",
+        "AATSC0are",
+        "AATSC0c"
+      ]
+    },
+    "cluster_9": {
+      "representative": "AATS0v",
+      "members": [
+        "AATSC0d",
+        "AATSC0dv",
+        "AATSC0i",
+        "AATSC0m",
+        "AATSC0p",
+        "AATSC0pe",
+        "AATSC0se"
+      ]
+    },
+    "cluster_10": {
+      "representative": "AATS1Z",
+      "members": [
+        "AATSC0v",
+        "AATSC1Z",
+        "AATSC1are",
+        "AATSC1c",
+        "AATSC1d",
+        "AATSC1dv",
+        "AATSC1i"
+      ]
+    },
+    "cluster_11": {
+      "representative": "AATS1are",
+      "members": [
+        "AATSC1m",
+        "AATSC1p",
+        "AATSC1pe",
+        "AATSC1se",
+        "AATSC1v",
+        "AATSC2Z",
+        "AATSC2are"
+      ]
+    },
+    "cluster_12": {
+      "representative": "AATS1d",
+      "members": [
+        "AATSC2c",
+        "AATSC2d",
+        "AATSC2dv",
+        "AATSC2i",
+        "AATSC2m",
+        "AATSC2p",
+        "AATSC2pe"
+      ]
+    },
+    "cluster_13": {
+      "representative": "AATS1dv",
+      "members": [
+        "AATSC2se",
+        "AATSC2v",
+        "AATSC3Z",
+        "AATSC3are",
+        "AATSC3c",
+        "AATSC3d",
+        "AATSC3dv"
+      ]
+    },
+    "cluster_14": {
+      "representative": "AATS1i",
+      "members": [
+        "AATSC3i",
+        "AATSC3m",
+        "AATSC3p",
+        "AATSC3pe",
+        "AATSC3se",
+        "AATSC3v",
+        "AATSC4Z"
+      ]
+    },
+    "cluster_15": {
+      "representative": "AATS1m",
+      "members": [
+        "AATSC4are",
+        "AATSC4c",
+        "AATSC4d",
+        "AATSC4dv",
+        "AATSC4i",
+        "AATSC4m",
+        "AATSC4p"
+      ]
+    },
+    "cluster_16": {
+      "representative": "AATS1p",
+      "members": [
+        "AATSC4pe",
+        "AATSC4se",
+        "AATSC4v",
+        "AATSC5Z",
+        "AATSC5are",
+        "AATSC5c",
+        "AATSC5d"
+      ]
+    },
+    "cluster_17": {
+      "representative": "AATS1pe",
+      "members": [
+        "AATSC5dv",
+        "AATSC5i",
+        "AATSC5m",
+        "AATSC5p",
+        "AATSC5pe",
+        "AATSC5se",
+        "AATSC5v"
+      ]
+    },
+    "cluster_18": {
+      "representative": "AATS1se",
+      "members": [
+        "AMW",
+        "ATS0Z",
+        "ATS0are",
+        "ATS0d",
+        "ATS0dv",
+        "ATS0i",
+        "ATS0m"
+      ]
+    },
+    "cluster_19": {
+      "representative": "AATS1v",
+      "members": [
+        "ATS0p",
+        "ATS0pe",
+        "ATS0se",
+        "ATS0v",
+        "ATS1Z",
+        "ATS1are",
+        "ATS1d"
+      ]
+    },
+    "cluster_20": {
+      "representative": "AATS2Z",
+      "members": [
+        "ATS1dv",
+        "ATS1i",
+        "ATS1m",
+        "ATS1p",
+        "ATS1pe",
+        "ATS1se",
+        "ATS1v"
+      ]
+    },
+    "cluster_21": {
+      "representative": "AATS2are",
+      "members": [
+        "ATS2Z",
+        "ATS2are",
+        "ATS2d",
+        "ATS2dv",
+        "ATS2i",
+        "ATS2m",
+        "ATS2p"
+      ]
+    },
+    "cluster_22": {
+      "representative": "AATS2d",
+      "members": [
+        "ATS2pe",
+        "ATS2se",
+        "ATS2v",
+        "ATS3Z",
+        "ATS3are",
+        "ATS3d",
+        "ATS3dv"
+      ]
+    },
+    "cluster_23": {
+      "representative": "AATS2dv",
+      "members": [
+        "ATS3i",
+        "ATS3m",
+        "ATS3p",
+        "ATS3pe",
+        "ATS3se",
+        "ATS3v",
+        "ATS4Z"
+      ]
+    },
+    "cluster_24": {
+      "representative": "AATS2i",
+      "members": [
+        "ATS4are",
+        "ATS4d",
+        "ATS4dv",
+        "ATS4i",
+        "ATS4m",
+        "ATS4p",
+        "ATS4pe"
+      ]
+    },
+    "cluster_25": {
+      "representative": "AATS2m",
+      "members": [
+        "ATS4se",
+        "ATS4v",
+        "ATS5Z",
+        "ATS5are",
+        "ATS5d",
+        "ATS5dv",
+        "ATS5i"
+      ]
+    },
+    "cluster_26": {
+      "representative": "AATS2p",
+      "members": [
+        "ATS5m",
+        "ATS5p",
+        "ATS5pe",
+        "ATS5se",
+        "ATS5v",
+        "ATS6Z",
+        "ATS6are"
+      ]
+    },
+    "cluster_27": {
+      "representative": "AATS2pe",
+      "members": [
+        "ATS6d",
+        "ATS6dv",
+        "ATS6i",
+        "ATS6m",
+        "ATS6p",
+        "ATS6pe",
+        "ATS6se"
+      ]
+    },
+    "cluster_28": {
+      "representative": "AATS2se",
+      "members": [
+        "ATS6v",
+        "ATS7Z",
+        "ATS7are",
+        "ATS7d",
+        "ATS7dv",
+        "ATS7i",
+        "ATS7m"
+      ]
+    },
+    "cluster_29": {
+      "representative": "AATS2v",
+      "members": [
+        "ATS7p",
+        "ATS7pe",
+        "ATS7se",
+        "ATS7v",
+        "ATS8Z",
+        "ATS8are",
+        "ATS8d"
+      ]
+    },
+    "cluster_30": {
+      "representative": "AATS3Z",
+      "members": [
+        "ATS8dv",
+        "ATS8i",
+        "ATS8m",
+        "ATS8p",
+        "ATS8pe",
+        "ATS8se",
+        "ATS8v"
+      ]
+    },
+    "cluster_31": {
+      "representative": "AATS3are",
+      "members": [
+        "ATSC0Z",
+        "ATSC0are",
+        "ATSC0c",
+        "ATSC0d",
+        "ATSC0dv",
+        "ATSC0i",
+        "ATSC0m"
+      ]
+    },
+    "cluster_32": {
+      "representative": "AATS3d",
+      "members": [
+        "ATSC0p",
+        "ATSC0pe",
+        "ATSC0se",
+        "ATSC0v",
+        "ATSC1Z",
+        "ATSC1are",
+        "ATSC1c"
+      ]
+    },
+    "cluster_33": {
+      "representative": "AATS3dv",
+      "members": [
+        "ATSC1d",
+        "ATSC1dv",
+        "ATSC1i",
+        "ATSC1m",
+        "ATSC1p",
+        "ATSC1pe",
+        "ATSC1se"
+      ]
+    },
+    "cluster_34": {
+      "representative": "AATS3i",
+      "members": [
+        "ATSC1v",
+        "ATSC2Z",
+        "ATSC2are",
+        "ATSC2c",
+        "ATSC2d",
+        "ATSC2dv",
+        "ATSC2i"
+      ]
+    },
+    "cluster_35": {
+      "representative": "AATS3m",
+      "members": [
+        "ATSC2m",
+        "ATSC2p",
+        "ATSC2pe",
+        "ATSC2se",
+        "ATSC2v",
+        "ATSC3Z",
+        "ATSC3are"
+      ]
+    },
+    "cluster_36": {
+      "representative": "AATS3p",
+      "members": [
+        "ATSC3c",
+        "ATSC3d",
+        "ATSC3dv",
+        "ATSC3i",
+        "ATSC3m",
+        "ATSC3p",
+        "ATSC3pe"
+      ]
+    },
+    "cluster_37": {
+      "representative": "AATS3pe",
+      "members": [
+        "ATSC3se",
+        "ATSC3v",
+        "ATSC4Z",
+        "ATSC4are",
+        "ATSC4c",
+        "ATSC4d",
+        "ATSC4dv"
+      ]
+    },
+    "cluster_38": {
+      "representative": "AATS3se",
+      "members": [
+        "ATSC4i",
+        "ATSC4m",
+        "ATSC4p",
+        "ATSC4pe",
+        "ATSC4se",
+        "ATSC4v",
+        "ATSC5Z"
+      ]
+    },
+    "cluster_39": {
+      "representative": "AATS3v",
+      "members": [
+        "ATSC5are",
+        "ATSC5c",
+        "ATSC5d",
+        "ATSC5dv",
+        "ATSC5i",
+        "ATSC5m",
+        "ATSC5p"
+      ]
+    },
+    "cluster_40": {
+      "representative": "AATS4Z",
+      "members": [
+        "ATSC5pe",
+        "ATSC5se",
+        "ATSC5v",
+        "ATSC6Z",
+        "ATSC6are",
+        "ATSC6c",
+        "ATSC6d"
+      ]
+    },
+    "cluster_41": {
+      "representative": "AATS4are",
+      "members": [
+        "ATSC6dv",
+        "ATSC6i",
+        "ATSC6m",
+        "ATSC6p",
+        "ATSC6pe",
+        "ATSC6se",
+        "ATSC6v"
+      ]
+    },
+    "cluster_42": {
+      "representative": "AATS4d",
+      "members": [
+        "ATSC7Z",
+        "ATSC7are",
+        "ATSC7c",
+        "ATSC7d",
+        "ATSC7dv",
+        "ATSC7i",
+        "ATSC7m"
+      ]
+    },
+    "cluster_43": {
+      "representative": "AATS4dv",
+      "members": [
+        "ATSC7p",
+        "ATSC7pe",
+        "ATSC7se",
+        "ATSC7v",
+        "ATSC8Z",
+        "ATSC8are",
+        "ATSC8c"
+      ]
+    },
+    "cluster_44": {
+      "representative": "AATS4i",
+      "members": [
+        "ATSC8d",
+        "ATSC8dv",
+        "ATSC8i",
+        "ATSC8m",
+        "ATSC8p",
+        "ATSC8pe",
+        "ATSC8se"
+      ]
+    },
+    "cluster_45": {
+      "representative": "AATS4m",
+      "members": [
+        "ATSC8v",
+        "AXp-1d",
+        "AXp-1dv",
+        "AXp-2d",
+        "AXp-2dv",
+        "AXp-3d",
+        "AXp-3dv"
+      ]
+    },
+    "cluster_46": {
+      "representative": "AATS4p",
+      "members": [
+        "AXp-4d",
+        "AXp-4dv",
+        "AvgIpc",
+        "BIC0",
+        "BIC1",
+        "BIC2",
+        "BIC3"
+      ]
+    },
+    "cluster_47": {
+      "representative": "AATS4pe",
+      "members": [
+        "BIC4",
+        "BIC5",
+        "BalabanJ",
+        "BertzCT",
+        "C1SP2",
+        "C1SP3",
+        "C2SP2"
+      ]
+    },
+    "cluster_48": {
+      "representative": "AATS4se",
+      "members": [
+        "C2SP3",
+        "C3SP2",
+        "C3SP3",
+        "CIC0",
+        "CIC1",
+        "CIC2",
+        "CIC3"
+      ]
+    },
+    "cluster_49": {
+      "representative": "AATS4v",
+      "members": [
+        "CIC4",
+        "CIC5",
+        "Chi0",
+        "Chi0n",
+        "Chi0v",
+        "Chi1",
+        "Chi1n"
+      ]
+    },
+    "cluster_50": {
+      "representative": "AATS5Z",
+      "members": [
+        "Chi1v",
+        "Chi2n",
+        "Chi2v",
+        "Chi3n",
+        "Chi3v",
+        "Chi4n",
+        "Chi4v"
+      ]
+    },
+    "cluster_51": {
+      "representative": "AATS5are",
+      "members": [
+        "Diameter",
+        "ECIndex",
+        "EState_VSA1",
+        "EState_VSA10",
+        "EState_VSA2",
+        "EState_VSA3",
+        "EState_VSA4"
+      ]
+    },
+    "cluster_52": {
+      "representative": "AATS5d",
+      "members": [
+        "EState_VSA5",
+        "EState_VSA6",
+        "EState_VSA7",
+        "EState_VSA8",
+        "EState_VSA9",
+        "ExactMolWt",
+        "FCSP3"
+      ]
+    },
+    "cluster_53": {
+      "representative": "AATS5dv",
+      "members": [
+        "FilterItLogS",
+        "FpDensityMorgan1",
+        "FpDensityMorgan2",
+        "FpDensityMorgan3",
+        "FractionCSP3",
+        "GATS1Z",
+        "GATS1are"
+      ]
+    },
+    "cluster_54": {
+      "representative": "AATS5i",
+      "members": [
+        "GATS1c",
+        "GATS1d",
+        "GATS1dv",
+        "GATS1i",
+        "GATS1m",
+        "GATS1p",
+        "GATS1pe"
+      ]
+    },
+    "cluster_55": {
+      "representative": "AATS5m",
+      "members": [
+        "GATS1se",
+        "GATS1v",
+        "GATS2Z",
+        "GATS2are",
+        "GATS2c",
+        "GATS2d",
+        "GATS2dv"
+      ]
+    },
+    "cluster_56": {
+      "representative": "AATS5p",
+      "members": [
+        "GATS2i",
+        "GATS2m",
+        "GATS2p",
+        "GATS2pe",
+        "GATS2se",
+        "GATS2v",
+        "GATS3Z"
+      ]
+    },
+    "cluster_57": {
+      "representative": "AATS5pe",
+      "members": [
+        "GATS3are",
+        "GATS3c",
+        "GATS3d",
+        "GATS3dv",
+        "GATS3i",
+        "GATS3m",
+        "GATS3p"
+      ]
+    },
+    "cluster_58": {
+      "representative": "AATS5se",
+      "members": [
+        "GATS3pe",
+        "GATS3se",
+        "GATS3v",
+        "GATS4Z",
+        "GATS4are",
+        "GATS4c",
+        "GATS4d"
+      ]
+    },
+    "cluster_59": {
+      "representative": "AATS5v",
+      "members": [
+        "GATS4dv",
+        "GATS4i",
+        "GATS4m",
+        "GATS4p",
+        "GATS4pe",
+        "GATS4se",
+        "GATS4v"
+      ]
+    },
+    "cluster_60": {
+      "representative": "AATSC0Z",
+      "members": [
+        "GATS5Z",
+        "GATS5are",
+        "GATS5c",
+        "GATS5d",
+        "GATS5dv",
+        "GATS5i",
+        "GATS5m"
+      ]
+    },
+    "cluster_61": {
+      "representative": "AATSC0are",
+      "members": [
+        "GATS5p",
+        "GATS5pe",
+        "GATS5se",
+        "GATS5v",
+        "GGI1",
+        "GGI10",
+        "GGI2"
+      ]
+    },
+    "cluster_62": {
+      "representative": "AATSC0c",
+      "members": [
+        "GGI3",
+        "GGI4",
+        "GGI5",
+        "GGI6",
+        "GGI7",
+        "GGI8",
+        "GGI9"
+      ]
+    },
+    "cluster_63": {
+      "representative": "AATSC0d",
+      "members": [
+        "GhoseFilter",
+        "HallKierAlpha",
+        "HeavyAtomCount",
+        "HeavyAtomMolWt",
+        "HybRatio",
+        "IC0",
+        "IC1"
+      ]
+    },
+    "cluster_64": {
+      "representative": "AATSC0dv",
+      "members": [
+        "IC2",
+        "IC3",
+        "IC4",
+        "IC5",
+        "Ipc",
+        "JGI1",
+        "JGI10"
+      ]
+    },
+    "cluster_65": {
+      "representative": "AATSC0i",
+      "members": [
+        "JGI2",
+        "JGI3",
+        "JGI4",
+        "JGI5",
+        "JGI6",
+        "JGI7",
+        "JGI8"
+      ]
+    },
+    "cluster_66": {
+      "representative": "AATSC0m",
+      "members": [
+        "JGI9",
+        "JGT10",
+        "Kappa1",
+        "Kappa2",
+        "Kappa3",
+        "Kier1",
+        "Kier2"
+      ]
+    },
+    "cluster_67": {
+      "representative": "AATSC0p",
+      "members": [
+        "Kier3",
+        "LabuteASA",
+        "Lipinski",
+        "MATS1Z",
+        "MATS1are",
+        "MATS1c",
+        "MATS1d"
+      ]
+    },
+    "cluster_68": {
+      "representative": "AATSC0pe",
+      "members": [
+        "MATS1dv",
+        "MATS1i",
+        "MATS1m",
+        "MATS1p",
+        "MATS1pe",
+        "MATS1se",
+        "MATS1v"
+      ]
+    },
+    "cluster_69": {
+      "representative": "AATSC0se",
+      "members": [
+        "MATS2Z",
+        "MATS2are",
+        "MATS2c",
+        "MATS2d",
+        "MATS2dv",
+        "MATS2i",
+        "MATS2m"
+      ]
+    },
+    "cluster_70": {
+      "representative": "AATSC0v",
+      "members": [
+        "MATS2p",
+        "MATS2pe",
+        "MATS2se",
+        "MATS2v",
+        "MATS3Z",
+        "MATS3are",
+        "MATS3c"
+      ]
+    },
+    "cluster_71": {
+      "representative": "AATSC1Z",
+      "members": [
+        "MATS3d",
+        "MATS3dv",
+        "MATS3i",
+        "MATS3m",
+        "MATS3p",
+        "MATS3pe",
+        "MATS3se"
+      ]
+    },
+    "cluster_72": {
+      "representative": "AATSC1are",
+      "members": [
+        "MATS3v",
+        "MATS4Z",
+        "MATS4are",
+        "MATS4c",
+        "MATS4d",
+        "MATS4dv",
+        "MATS4i"
+      ]
+    },
+    "cluster_73": {
+      "representative": "AATSC1c",
+      "members": [
+        "MATS4m",
+        "MATS4p",
+        "MATS4pe",
+        "MATS4se",
+        "MATS4v",
+        "MATS5Z",
+        "MATS5are"
+      ]
+    },
+    "cluster_74": {
+      "representative": "AATSC1d",
+      "members": [
+        "MATS5c",
+        "MATS5d",
+        "MATS5dv",
+        "MATS5i",
+        "MATS5m",
+        "MATS5p",
+        "MATS5pe"
+      ]
+    },
+    "cluster_75": {
+      "representative": "AATSC1dv",
+      "members": [
+        "MATS5se",
+        "MATS5v",
+        "MAXdO",
+        "MDEC-33",
+        "MDEO-11",
+        "MIC0",
+        "MIC1"
+      ]
+    },
+    "cluster_76": {
+      "representative": "AATSC1i",
+      "members": [
+        "MIC2",
+        "MIC3",
+        "MIC4",
+        "MIC5",
+        "MINdO",
+        "MPC10",
+        "MPC2"
+      ]
+    },
+    "cluster_77": {
+      "representative": "AATSC1m",
+      "members": [
+        "MPC3",
+        "MPC4",
+        "MPC5",
+        "MPC6",
+        "MPC7",
+        "MPC8",
+        "MPC9"
+      ]
+    },
+    "cluster_78": {
+      "representative": "AATSC1p",
+      "members": [
+        "MW",
+        "MWC01",
+        "MWC02",
+        "MWC03",
+        "MWC04",
+        "MWC05",
+        "MWC06"
+      ]
+    },
+    "cluster_79": {
+      "representative": "AATSC1pe",
+      "members": [
+        "MWC07",
+        "MWC08",
+        "MWC09",
+        "MWC10",
+        "MZ",
+        "Mare",
+        "MaxAbsEStateIndex"
+      ]
+    },
+    "cluster_80": {
+      "representative": "AATSC1se",
+      "members": [
+        "MaxAbsPartialCharge",
+        "MaxEStateIndex",
+        "MaxPartialCharge",
+        "Mi",
+        "MinAbsEStateIndex",
+        "MinAbsPartialCharge",
+        "MinEStateIndex"
+      ]
+    },
+    "cluster_81": {
+      "representative": "AATSC1v",
+      "members": [
+        "MinPartialCharge",
+        "Mm",
+        "MolLogP",
+        "MolMR",
+        "MolWt",
+        "Mp",
+        "Mpe"
+      ]
+    },
+    "cluster_82": {
+      "representative": "AATSC2Z",
+      "members": [
+        "Mse",
+        "Mv",
+        "NHOHCount",
+        "NOCount",
+        "NaaCH",
+        "NaaO",
+        "NaaaC"
+      ]
+    },
+    "cluster_83": {
+      "representative": "AATSC2are",
+      "members": [
+        "NaasC",
+        "NdO",
+        "NddssS",
+        "NdsCH",
+        "NdsN",
+        "NdssC",
+        "NsCH3"
+      ]
+    },
+    "cluster_84": {
+      "representative": "AATSC2c",
+      "members": [
+        "NsCl",
+        "NsNH2",
+        "NsOH",
+        "NssCH2",
+        "NssNH",
+        "NssO",
+        "NsssCH"
+      ]
+    },
+    "cluster_85": {
+      "representative": "AATSC2d",
+      "members": [
+        "NsssN",
+        "NssssC",
+        "NumAliphaticHeterocycles",
+        "NumAliphaticRings",
+        "NumAmideBonds",
+        "NumAromaticCarbocycles",
+        "NumAromaticHeterocycles"
+      ]
+    },
+    "cluster_86": {
+      "representative": "AATSC2dv",
+      "members": [
+        "NumAromaticRings",
+        "NumAtomStereoCenters",
+        "NumHAcceptors",
+        "NumHDonors",
+        "NumHeteroatoms",
+        "NumHeterocycles",
+        "NumRadicalElectrons"
+      ]
+    },
+    "cluster_87": {
+      "representative": "AATSC2i",
+      "members": [
+        "NumRotatableBonds",
+        "NumSaturatedRings",
+        "NumUnspecifiedAtomStereoCenters",
+        "NumValenceElectrons",
+        "PEOE_VSA1",
+        "PEOE_VSA10",
+        "PEOE_VSA11"
+      ]
+    },
+    "cluster_88": {
+      "representative": "AATSC2m",
+      "members": [
+        "PEOE_VSA12",
+        "PEOE_VSA13",
+        "PEOE_VSA14",
+        "PEOE_VSA2",
+        "PEOE_VSA3",
+        "PEOE_VSA4",
+        "PEOE_VSA5"
+      ]
+    },
+    "cluster_89": {
+      "representative": "AATSC2p",
+      "members": [
+        "PEOE_VSA6",
+        "PEOE_VSA7",
+        "PEOE_VSA8",
+        "PEOE_VSA9",
+        "PetitjeanIndex",
+        "Phi",
+        "RNCG"
+      ]
+    },
+    "cluster_90": {
+      "representative": "AATSC2pe",
+      "members": [
+        "RPCG",
+        "Radius",
+        "RingCount",
+        "RotRatio",
+        "SIC0",
+        "SIC1",
+        "SIC2"
+      ]
+    },
+    "cluster_91": {
+      "representative": "AATSC2se",
+      "members": [
+        "SIC3",
+        "SIC4",
+        "SIC5",
+        "SLogP",
+        "SMR",
+        "SMR_VSA1",
+        "SMR_VSA10"
+      ]
+    },
+    "cluster_92": {
+      "representative": "AATSC2v",
+      "members": [
+        "SMR_VSA3",
+        "SMR_VSA4",
+        "SMR_VSA5",
+        "SMR_VSA6",
+        "SMR_VSA7",
+        "SMR_VSA9",
+        "SPS"
+      ]
+    },
+    "cluster_93": {
+      "representative": "AATSC3Z",
+      "members": [
+        "SRW02",
+        "SRW04",
+        "SRW05",
+        "SRW06",
+        "SRW07",
+        "SRW08",
+        "SRW09"
+      ]
+    },
+    "cluster_94": {
+      "representative": "AATSC3are",
+      "members": [
+        "SRW10",
+        "SZ",
+        "SaaCH",
+        "SaaN",
+        "SaaO",
+        "SaaS",
+        "SaaaC"
+      ]
+    },
+    "cluster_95": {
+      "representative": "AATSC3c",
+      "members": [
+        "SaasC",
+        "Sare",
+        "SdCH2",
+        "SdO",
+        "SddsN",
+        "SddssS",
+        "SdsCH"
+      ]
+    },
+    "cluster_96": {
+      "representative": "AATSC3d",
+      "members": [
+        "SdsN",
+        "SdssC",
+        "Si",
+        "SlogP_VSA1",
+        "SlogP_VSA10",
+        "SlogP_VSA11",
+        "SlogP_VSA12"
+      ]
+    },
+    "cluster_97": {
+      "representative": "AATSC3dv",
+      "members": [
+        "SlogP_VSA2",
+        "SlogP_VSA3",
+        "SlogP_VSA4",
+        "SlogP_VSA5",
+        "SlogP_VSA6",
+        "SlogP_VSA7",
+        "SlogP_VSA8"
+      ]
+    },
+    "cluster_98": {
+      "representative": "AATSC3i",
+      "members": [
+        "Sm",
+        "Sp",
+        "Spe",
+        "SsCH3",
+        "SsCl",
+        "SsNH2",
+        "SsOH"
+      ]
+    },
+    "cluster_99": {
+      "representative": "AATSC3m",
+      "members": [
+        "SsSH",
+        "Sse",
+        "SssCH2",
+        "SssNH",
+        "SssO",
+        "SssS",
+        "SsssCH"
+      ]
+    },
+    "cluster_100": {
+      "representative": "AATSC3p",
+      "members": [
+        "SsssN",
+        "SssssC",
+        "Sv",
+        "TIC0",
+        "TIC1",
+        "TIC2",
+        "TIC3"
+      ]
+    },
+    "cluster_101": {
+      "representative": "AATSC3pe",
+      "members": [
+        "TIC4",
+        "TIC5",
+        "TMPC10",
+        "TMWC10",
+        "TPSA",
+        "TSRW10",
+        "TopoPSA"
+      ]
+    },
+    "cluster_102": {
+      "representative": "AATSC3se",
+      "members": [
+        "TopoPSA(NO)",
+        "TopoShapeIndex",
+        "TpiPC10",
+        "VAdjMat",
+        "VMcGowan",
+        "VSA_EState1",
+        "VSA_EState10"
+      ]
+    },
+    "cluster_103": {
+      "representative": "AATSC3v",
+      "members": [
+        "VSA_EState2",
+        "VSA_EState3",
+        "VSA_EState4",
+        "VSA_EState5",
+        "VSA_EState6",
+        "VSA_EState7",
+        "VSA_EState8"
+      ]
+    },
+    "cluster_104": {
+      "representative": "AATSC4Z",
+      "members": [
+        "VSA_EState9",
+        "WPath",
+        "WPol",
+        "Xc-3d",
+        "Xc-3dv",
+        "Xc-4d",
+        "Xc-4dv"
+      ]
+    },
+    "cluster_105": {
+      "representative": "AATSC4are",
+      "members": [
+        "Xc-5d",
+        "Xc-5dv",
+        "Xc-6d",
+        "Xc-6dv",
+        "Xch-4d",
+        "Xch-4dv",
+        "Xch-5d"
+      ]
+    },
+    "cluster_106": {
+      "representative": "AATSC4c",
+      "members": [
+        "Xch-5dv",
+        "Xch-6d",
+        "Xch-6dv",
+        "Xch-7d",
+        "Xch-7dv",
+        "Xp-1d",
+        "Xp-1dv"
+      ]
+    },
+    "cluster_107": {
+      "representative": "AATSC4d",
+      "members": [
+        "Xp-2d",
+        "Xp-2dv",
+        "Xp-3d",
+        "Xp-3dv",
+        "Xp-4d",
+        "Xp-4dv",
+        "Xp-5d"
+      ]
+    },
+    "cluster_108": {
+      "representative": "AATSC4dv",
+      "members": [
+        "Xp-5dv",
+        "Xp-6d",
+        "Xp-6dv",
+        "Xp-7d",
+        "Xp-7dv",
+        "Xpc-4d",
+        "Xpc-4dv"
+      ]
+    },
+    "cluster_109": {
+      "representative": "AATSC4i",
+      "members": [
+        "Xpc-5d",
+        "Xpc-5dv",
+        "Xpc-6d",
+        "Xpc-6dv",
+        "ZMIC0",
+        "ZMIC1",
+        "ZMIC2"
+      ]
+    },
+    "cluster_110": {
+      "representative": "AATSC4m",
+      "members": [
+        "ZMIC3",
+        "ZMIC4",
+        "ZMIC5",
+        "Zagreb1",
+        "Zagreb2",
+        "apol",
+        "bpol"
+      ]
+    },
+    "cluster_111": {
+      "representative": "AATSC4p",
+      "members": [
+        "fMF",
+        "fr_Al_COO",
+        "fr_Al_OH",
+        "fr_Al_OH_noTert",
+        "fr_ArN",
+        "fr_Ar_COO",
+        "fr_Ar_OH"
+      ]
+    },
+    "cluster_112": {
+      "representative": "AATSC4pe",
+      "members": [
+        "fr_COO",
+        "fr_COO2",
+        "fr_C_O",
+        "fr_C_O_noCOO",
+        "fr_NH0",
+        "fr_NH1",
+        "fr_NH2"
+      ]
+    },
+    "cluster_113": {
+      "representative": "AATSC4se",
+      "members": [
+        "fr_N_O",
+        "fr_alkyl_halide",
+        "fr_amide",
+        "fr_amidine",
+        "fr_aniline",
+        "fr_aryl_methyl",
+        "fr_benzene"
+      ]
+    },
+    "cluster_114": {
+      "representative": "AATSC4v",
+      "members": [
+        "fr_ether",
+        "fr_furan",
+        "fr_halogen",
+        "fr_oxime",
+        "fr_para_hydroxylation",
+        "fr_phenol",
+        "fr_phenol_noOrthoHbond"
+      ]
+    },
+    "cluster_115": {
+      "representative": "AATSC5Z",
+      "members": [
+        "fr_unbrch_alkane",
+        "fragCpx",
+        "mZagreb2",
+        "n5HRing",
+        "n5Ring",
+        "n5aHRing_1",
+        "n5aRing_1"
+      ]
+    },
+    "cluster_116": {
+      "representative": "AATSC5are",
+      "members": [
+        "n6HRing",
+        "n6Ring",
+        "n6aHRing_1",
+        "n6aRing_1",
+        "n7Ring",
+        "n7aRing_1",
+        "nAHRing"
+      ]
+    },
+    "cluster_117": {
+      "representative": "AATSC5c",
+      "members": [
+        "nARing",
+        "nAcid",
+        "nAromAtom",
+        "nAromBond",
+        "nAtom",
+        "nBase",
+        "nBonds"
+      ]
+    },
+    "cluster_118": {
+      "representative": "AATSC5d",
+      "members": [
+        "nBondsA",
+        "nBondsD",
+        "nBondsKD",
+        "nBondsKS",
+        "nBondsM",
+        "nBondsO",
+        "nBondsS"
+      ]
+    },
+    "cluster_119": {
+      "representative": "AATSC5dv",
+      "members": [
+        "nC",
+        "nCl",
+        "nH",
+        "nHBAcc",
+        "nHBDon",
+        "nHRing",
+        "nHeavyAtom"
+      ]
+    }
+  }
+}

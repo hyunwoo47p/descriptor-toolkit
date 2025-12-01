@@ -1,0 +1,12 @@
+{
+  "pass": "pass1_variance_filtering",
+  "input_columns": 863,
+  "output_columns": 863,
+  "removed_columns": 0,
+  "criteria": {
+    "variance_threshold": 0.01,
+    "max_missing_ratio": 0.3
+  },
+  "removed_by_variance": 600,
+  "removed_by_missing": 275
+}
