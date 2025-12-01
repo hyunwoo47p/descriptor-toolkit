@@ -175,6 +175,13 @@ For more information, visit: https://github.com/your-repo
         help='HSIC/RDC threshold for nonlinear correlation')
     process_all_parser.add_argument('--min-effective-n', type=int, default=100,
         help='Minimum effective sample size for filtering (set lower for small datasets)')
+    # Binary skew filter parameters
+    process_all_parser.add_argument('--use-binary-filter', action='store_true',
+        help='Enable binary/skewed descriptor filtering')
+    process_all_parser.add_argument('--binary-threshold', type=float, default=0.40,
+        help='Threshold for binary descriptor detection (fraction of most common value)')
+    process_all_parser.add_argument('--binary-minority-frac', type=float, default=0.10,
+        help='Minimum minority class fraction for binary descriptors')
 
     # ===== Train command (ML Training) =====
     train_parser = subparsers.add_parser(
@@ -602,6 +609,9 @@ def run_process_all(args):
             vif_threshold=args.vif_threshold,
             nonlinear_threshold=args.nonlinear_threshold,
             min_effective_n=args.min_effective_n,
+            use_binary_skew_filter=args.use_binary_filter,
+            binary_skew_threshold=args.binary_threshold,
+            binary_minority_frac=args.binary_minority_frac,
         ),
         system=SystemConfig(
             checkpoint=not args.no_checkpoint,
@@ -753,7 +763,7 @@ def run_train(args):
     if not args.no_plots:
         print("\n📈 Generating plots...")
         try:
-            ensemble.plot_model_comparison(output_dir=str(output_dir))
+            ensemble.generate_all_plots(output_dir=str(output_dir))
         except Exception as e:
             print(f"   ⚠️ Plot generation failed: {e}")
 
@@ -774,7 +784,10 @@ def run_train(args):
     print(f"   • ml_results.json        - All experiment results")
     print(f"   • best_model.json        - Best model details")
     if not args.no_plots:
-        print(f"   • *.png                  - Comparison plots")
+        print(f"   • pred_vs_actual.png     - Predicted vs Actual plot")
+        print(f"   • residual_analysis.png  - Residual analysis")
+        print(f"   • feature_importance.png - Feature importance")
+        print(f"   • model_comparison_*.png - Model comparison plots")
     print("=" * 70)
 
     return 0

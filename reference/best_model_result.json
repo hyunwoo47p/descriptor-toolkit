@@ -1,0 +1,188 @@
+{
+  "model": "XGBoost",
+  "n_descriptors": 35,
+  "descriptors": [
+    "ATS1pe",
+    "AATSC3c",
+    "GATS2m",
+    "ATS8dv",
+    "AATSC2d",
+    "SIC2",
+    "MAXdO",
+    "MPC8",
+    "SsSH",
+    "n6Ring",
+    "MATS2m",
+    "ATSC4i",
+    "ATS6Z",
+    "qed",
+    "GGI6",
+    "RNCG",
+    "Chi0n",
+    "fr_Al_COO",
+    "AATS1are",
+    "ATSC1d",
+    "AATS1dv",
+    "Chi0v",
+    "AATSC4Z",
+    "MATS2dv",
+    "ATSC8d",
+    "AATS2pe",
+    "ATSC1i",
+    "fr_halogen",
+    "MinPartialCharge",
+    "nAromBond",
+    "ATS2pe",
+    "n6aRing_1",
+    "SMR",
+    "MATS2pe",
+    "AATSC3m"
+  ],
+  "kfold_r2_mean": -0.3259319694603172,
+  "kfold_r2_std": 0.11027292263963413,
+  "holdout_r2": 0.7322940399319645,
+  "holdout_rmse": 1.3679643900842677,
+  "holdout_mae": 1.117861675911333,
+  "feature_importance": [
+    {
+      "feature": "fr_Al_COO",
+      "importance": 0.2684647738933563
+    },
+    {
+      "feature": "Chi0v",
+      "importance": 0.10213249176740646
+    },
+    {
+      "feature": "MAXdO",
+      "importance": 0.0949447751045227
+    },
+    {
+      "feature": "MATS2pe",
+      "importance": 0.07265273481607437
+    },
+    {
+      "feature": "ATSC4i",
+      "importance": 0.06199510395526886
+    },
+    {
+      "feature": "GATS2m",
+      "importance": 0.055284224450588226
+    },
+    {
+      "feature": "AATS2pe",
+      "importance": 0.05235259607434273
+    },
+    {
+      "feature": "AATSC2d",
+      "importance": 0.04239314794540405
+    },
+    {
+      "feature": "AATSC3c",
+      "importance": 0.03803052380681038
+    },
+    {
+      "feature": "MATS2dv",
+      "importance": 0.030518367886543274
+    },
+    {
+      "feature": "RNCG",
+      "importance": 0.0244245994836092
+    },
+    {
+      "feature": "SIC2",
+      "importance": 0.022894658148288727
+    },
+    {
+      "feature": "SsSH",
+      "importance": 0.02186775580048561
+    },
+    {
+      "feature": "AATS1dv",
+      "importance": 0.018375566229224205
+    },
+    {
+      "feature": "ATSC1d",
+      "importance": 0.014735214412212372
+    },
+    {
+      "feature": "AATS1are",
+      "importance": 0.014215102419257164
+    },
+    {
+      "feature": "ATSC1i",
+      "importance": 0.01280915830284357
+    },
+    {
+      "feature": "MinPartialCharge",
+      "importance": 0.009886249899864197
+    },
+    {
+      "feature": "qed",
+      "importance": 0.009439093992114067
+    },
+    {
+      "feature": "MPC8",
+      "importance": 0.008778300136327744
+    },
+    {
+      "feature": "SMR",
+      "importance": 0.007919983007013798
+    },
+    {
+      "feature": "AATSC3m",
+      "importance": 0.005974487401545048
+    },
+    {
+      "feature": "Chi0n",
+      "importance": 0.003514594165608287
+    },
+    {
+      "feature": "MATS2m",
+      "importance": 0.00348463817499578
+    },
+    {
+      "feature": "ATSC8d",
+      "importance": 0.001077089924365282
+    },
+    {
+      "feature": "AATSC4Z",
+      "importance": 0.0009865249739959836
+    },
+    {
+      "feature": "ATS1pe",
+      "importance": 0.000484916236018762
+    },
+    {
+      "feature": "fr_halogen",
+      "importance": 0.00034059537574648857
+    },
+    {
+      "feature": "ATS6Z",
+      "importance": 2.0235052943462506e-05
+    },
+    {
+      "feature": "ATS8dv",
+      "importance": 1.2765156043315073e-06
+    },
+    {
+      "feature": "nAromBond",
+      "importance": 1.1387089671188733e-06
+    },
+    {
+      "feature": "n6Ring",
+      "importance": 1.2316408515289368e-07
+    },
+    {
+      "feature": "GGI6",
+      "importance": 5.12481506120821e-08
+    },
+    {
+      "feature": "ATS2pe",
+      "importance": 9.344294227275896e-09
+    },
+    {
+      "feature": "n6aRing_1",
+      "importance": 0.0
+    }
+  ]
+}

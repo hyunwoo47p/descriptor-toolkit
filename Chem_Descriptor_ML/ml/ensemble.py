@@ -823,3 +823,178 @@ class OptimalMLEnsemble:
             plt.close()
 
         print(f"Plots saved to {output_path}")
+
+    def plot_best_model_analysis(self, output_dir: Union[str, Path] = 'output'):
+        """
+        Generate detailed analysis plots for the best model.
+        Includes: Predicted vs Actual, Residual plot, Feature importance.
+        """
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+        if not self.results:
+            print("No results to plot")
+            return
+
+        # Find best model
+        best_result = max(self.results, key=lambda x: x['holdout_r2'])
+        model_name = best_result['model_name']
+        n_desc = best_result['n_descriptors']
+        descriptors = best_result['descriptors']
+
+        # Get the trained model
+        key = f"{model_name}_{n_desc}D"
+        if key not in self.best_models:
+            print(f"Model {key} not found in best_models")
+            return
+
+        model = self.best_models[key]['model']
+
+        # Prepare data
+        X_train, X_test, y_train, y_test = self._prepare_data(descriptors)
+
+        # Get predictions
+        y_pred_train = model.predict(X_train)
+        y_pred_test = model.predict(X_test)
+
+        # === 1. Predicted vs Actual (Main plot) ===
+        fig, ax = plt.subplots(figsize=(10, 10))
+
+        # Plot train and test data
+        ax.scatter(y_train, y_pred_train, alpha=0.6, s=80, c='blue',
+                   edgecolors='darkblue', linewidth=1, label=f'Train (n={len(y_train)})')
+        ax.scatter(y_test, y_pred_test, alpha=0.8, s=100, c='red',
+                   edgecolors='darkred', linewidth=1.5, label=f'Test (n={len(y_test)})')
+
+        # Perfect prediction line
+        all_values = np.concatenate([y_train, y_test, y_pred_train, y_pred_test])
+        min_val, max_val = all_values.min(), all_values.max()
+        margin = (max_val - min_val) * 0.1
+        ax.plot([min_val - margin, max_val + margin],
+                [min_val - margin, max_val + margin],
+                'k--', linewidth=2, label='Perfect Prediction')
+
+        # Calculate metrics for display
+        train_r2 = r2_score(y_train, y_pred_train)
+        test_r2 = r2_score(y_test, y_pred_test)
+        test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_test))
+
+        # Add metrics text box
+        textstr = f'Test R² = {test_r2:.4f}\nTest RMSE = {test_rmse:.4f}\nTrain R² = {train_r2:.4f}'
+        props = dict(boxstyle='round', facecolor='wheat', alpha=0.8)
+        ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=12,
+                verticalalignment='top', bbox=props, fontweight='bold')
+
+        ax.set_xlabel(f'Actual {self.target_col}', fontsize=14, fontweight='bold')
+        ax.set_ylabel(f'Predicted {self.target_col}', fontsize=14, fontweight='bold')
+        ax.set_title(f'{model_name} ({n_desc}D) - Predicted vs Actual',
+                     fontsize=16, fontweight='bold', pad=20)
+        ax.legend(loc='lower right', fontsize=11)
+        ax.set_xlim(min_val - margin, max_val + margin)
+        ax.set_ylim(min_val - margin, max_val + margin)
+        ax.set_aspect('equal')
+        ax.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        plt.savefig(output_path / 'pred_vs_actual.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        # === 2. Residual Plot ===
+        fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+
+        # Residuals vs Predicted
+        residuals_test = y_test - y_pred_test
+        axes[0].scatter(y_pred_test, residuals_test, alpha=0.7, s=80, c='red',
+                        edgecolors='darkred', linewidth=1)
+        axes[0].axhline(y=0, color='black', linestyle='--', linewidth=2)
+        axes[0].set_xlabel('Predicted Value', fontsize=12, fontweight='bold')
+        axes[0].set_ylabel('Residual (Actual - Predicted)', fontsize=12, fontweight='bold')
+        axes[0].set_title('Residuals vs Predicted', fontsize=14, fontweight='bold')
+        axes[0].grid(True, alpha=0.3)
+
+        # Residual Distribution
+        axes[1].hist(residuals_test, bins=15, alpha=0.7, color='steelblue',
+                     edgecolor='black', linewidth=1.2)
+        axes[1].axvline(x=0, color='red', linestyle='--', linewidth=2, label='Zero')
+        axes[1].axvline(x=residuals_test.mean(), color='orange', linestyle='-',
+                        linewidth=2, label=f'Mean: {residuals_test.mean():.3f}')
+        axes[1].set_xlabel('Residual', fontsize=12, fontweight='bold')
+        axes[1].set_ylabel('Frequency', fontsize=12, fontweight='bold')
+        axes[1].set_title('Residual Distribution', fontsize=14, fontweight='bold')
+        axes[1].legend(fontsize=10)
+        axes[1].grid(True, alpha=0.3)
+
+        plt.suptitle(f'{model_name} ({n_desc}D) - Residual Analysis',
+                     fontsize=16, fontweight='bold', y=1.02)
+        plt.tight_layout()
+        plt.savefig(output_path / 'residual_analysis.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        # === 3. Feature Importance (Top 15) ===
+        if best_result['feature_importance']:
+            fig, ax = plt.subplots(figsize=(12, 8))
+
+            importance_df = pd.DataFrame([
+                {'feature': k, 'importance': v}
+                for k, v in best_result['feature_importance'].items()
+            ]).sort_values('importance', ascending=True)
+
+            # Top 15
+            top_n = min(15, len(importance_df))
+            importance_df = importance_df.tail(top_n)
+
+            colors = plt.cm.viridis(np.linspace(0.2, 0.8, top_n))
+            bars = ax.barh(importance_df['feature'], importance_df['importance'],
+                           color=colors, edgecolor='black', linewidth=1)
+
+            ax.set_xlabel('Feature Importance', fontsize=12, fontweight='bold')
+            ax.set_ylabel('Descriptor', fontsize=12, fontweight='bold')
+            ax.set_title(f'{model_name} ({n_desc}D) - Top {top_n} Feature Importance',
+                         fontsize=14, fontweight='bold', pad=15)
+            ax.grid(True, axis='x', alpha=0.3)
+
+            # Add value labels
+            for bar, val in zip(bars, importance_df['importance']):
+                ax.text(val + 0.001, bar.get_y() + bar.get_height()/2,
+                        f'{val:.4f}', va='center', fontsize=9)
+
+            plt.tight_layout()
+            plt.savefig(output_path / 'feature_importance.png', dpi=300, bbox_inches='tight')
+            plt.close()
+
+        # === 4. Actual vs Predicted with Error Bars (Test only) ===
+        fig, ax = plt.subplots(figsize=(12, 8))
+
+        # Sort by actual value for better visualization
+        sorted_idx = np.argsort(y_test)
+        y_test_sorted = y_test[sorted_idx]
+        y_pred_sorted = y_pred_test[sorted_idx]
+
+        x_pos = np.arange(len(y_test))
+        ax.scatter(x_pos, y_test_sorted, s=120, c='green', marker='o',
+                   label='Actual', edgecolors='darkgreen', linewidth=1.5, zorder=3)
+        ax.scatter(x_pos, y_pred_sorted, s=80, c='red', marker='s',
+                   label='Predicted', edgecolors='darkred', linewidth=1, zorder=2)
+
+        # Connect actual and predicted with lines
+        for i in range(len(x_pos)):
+            ax.plot([x_pos[i], x_pos[i]], [y_test_sorted[i], y_pred_sorted[i]],
+                    'gray', alpha=0.5, linewidth=1, zorder=1)
+
+        ax.set_xlabel('Sample Index (sorted by actual value)', fontsize=12, fontweight='bold')
+        ax.set_ylabel(self.target_col, fontsize=12, fontweight='bold')
+        ax.set_title(f'{model_name} ({n_desc}D) - Test Set Prediction Comparison',
+                     fontsize=14, fontweight='bold', pad=15)
+        ax.legend(fontsize=11, loc='upper left')
+        ax.grid(True, alpha=0.3)
+
+        plt.tight_layout()
+        plt.savefig(output_path / 'test_prediction_comparison.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        print(f"Best model analysis plots saved to {output_path}")
+
+    def generate_all_plots(self, output_dir: Union[str, Path] = 'output'):
+        """Generate all available plots"""
+        self.plot_model_comparison(output_dir)
+        self.plot_best_model_analysis(output_dir)
