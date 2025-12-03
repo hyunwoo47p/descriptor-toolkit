@@ -994,7 +994,95 @@ class OptimalMLEnsemble:
 
         print(f"Best model analysis plots saved to {output_path}")
 
+    def plot_all_models_comparison(self, output_dir: Union[str, Path] = 'output'):
+        """
+        Generate a grid plot comparing all models' predictions vs actual values.
+        Shows 8 models in a 2x4 grid for easy visual comparison.
+        """
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+        if not self.results:
+            print("No results to plot")
+            return
+
+        # Get unique models and find best result for each
+        model_results = {}
+        for result in self.results:
+            model_name = result['model_name']
+            if model_name not in model_results or result['holdout_r2'] > model_results[model_name]['holdout_r2']:
+                model_results[model_name] = result
+
+        # Sort by holdout R² (best first)
+        sorted_models = sorted(model_results.items(), key=lambda x: x[1]['holdout_r2'], reverse=True)
+
+        # Create 2x4 grid
+        n_models = len(sorted_models)
+        n_cols = 4
+        n_rows = (n_models + n_cols - 1) // n_cols
+
+        fig, axes = plt.subplots(n_rows, n_cols, figsize=(20, 5 * n_rows))
+        axes = axes.flatten() if n_models > 1 else [axes]
+
+        for idx, (model_name, result) in enumerate(sorted_models):
+            ax = axes[idx]
+            n_desc = result['n_descriptors']
+            descriptors = result['descriptors']
+
+            # Get model key
+            key = f"{model_name}_{n_desc}D"
+            if key not in self.best_models:
+                ax.text(0.5, 0.5, f'{model_name}\nModel not found',
+                        ha='center', va='center', transform=ax.transAxes)
+                ax.set_title(f'{model_name}')
+                continue
+
+            model = self.best_models[key]['model']
+
+            # Prepare data and get predictions
+            X_train, X_test, y_train, y_test = self._prepare_data(descriptors)
+            y_pred_train = model.predict(X_train)
+            y_pred_test = model.predict(X_test)
+
+            # Plot
+            ax.scatter(y_train, y_pred_train, alpha=0.5, s=40, c='blue', label='Train')
+            ax.scatter(y_test, y_pred_test, alpha=0.8, s=60, c='red', label='Test')
+
+            # Perfect prediction line
+            all_values = np.concatenate([y_train, y_test, y_pred_train, y_pred_test])
+            min_val, max_val = all_values.min(), all_values.max()
+            margin = (max_val - min_val) * 0.1
+            ax.plot([min_val - margin, max_val + margin],
+                    [min_val - margin, max_val + margin],
+                    'k--', linewidth=1.5)
+
+            # Metrics
+            test_r2 = r2_score(y_test, y_pred_test)
+            test_rmse = np.sqrt(mean_squared_error(y_test, y_pred_test))
+
+            ax.set_xlabel('Actual', fontsize=10)
+            ax.set_ylabel('Predicted', fontsize=10)
+            ax.set_title(f'{model_name} ({n_desc}D)\nR²={test_r2:.3f}, RMSE={test_rmse:.2f}',
+                         fontsize=11, fontweight='bold')
+            ax.legend(loc='lower right', fontsize=8)
+            ax.set_xlim(min_val - margin, max_val + margin)
+            ax.set_ylim(min_val - margin, max_val + margin)
+            ax.set_aspect('equal')
+            ax.grid(True, alpha=0.3)
+
+        # Hide empty subplots
+        for idx in range(len(sorted_models), len(axes)):
+            axes[idx].set_visible(False)
+
+        plt.suptitle('All Models Comparison - Predicted vs Actual', fontsize=16, fontweight='bold', y=1.02)
+        plt.tight_layout()
+        plt.savefig(output_path / 'all_models_comparison.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        print(f"All models comparison plot saved to {output_path / 'all_models_comparison.png'}")
+
     def generate_all_plots(self, output_dir: Union[str, Path] = 'output'):
         """Generate all available plots"""
         self.plot_model_comparison(output_dir)
         self.plot_best_model_analysis(output_dir)
+        self.plot_all_models_comparison(output_dir)
